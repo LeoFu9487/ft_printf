@@ -34,5 +34,6 @@ typedef struct  s_form
 int     ft_printf(const char *input, ...);
 void    ft_get_form(char **str, va_list *arg, t_form *form);
 void    ft_out(t_form form, va_list *arg, int *cnt);
+void    ft_itoa_base(void* num, const char *base);
 
 #endif
