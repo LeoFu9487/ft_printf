@@ -8,7 +8,7 @@ static void    ft_init_form(t_form *form)
     while (++ct < 5)
         form->flag[ct] = 0;
     form->width = 0;
-    form->length = 0;
+    form->length = -1;
     form->convention = -1;
     form->precision = -1;
 }

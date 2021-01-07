@@ -8,13 +8,17 @@ flags : '-' '+' ' ' '#' '0'
     precision : .number .*
     default 0
     length : l ll h hh
-             1  2 3  4
+             0  1 2  3
     convention :
     cspdiuxX%nf g e
     0123456789101112
 */
 static void ft_0(t_form form, va_list *arg, int *cnt)
 {
+    /*
+    c
+    length 0 not finished yet
+    */
     if (form.width > 1 && form.flag[0] == 0)
     {
         (*cnt) += form.width;
@@ -44,6 +48,10 @@ static void ft_1(t_form form, va_list *arg, int *cnt)
     char    *out;
     int     len;
 
+    /*
+    s
+    length 0 not finished yet
+    */
     if (form.precision != -1)
         out = ft_substr(va_arg(*arg, char*), 0, form.precision);
     else
@@ -76,6 +84,12 @@ static void ft_2(t_form form, va_list *arg, int *cnt)
     /*
     %p
     */
+    /*
+    flag : empty, -
+    width : yes
+    precision : no
+    */
+
 }
 static void ft_3(t_form form, va_list *arg, int *cnt)
 {
