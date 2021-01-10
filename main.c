@@ -21,16 +21,17 @@
 #include <limits.h>
 int main()
 {
-    //int a = 55;
-    unsigned long long int a;
-    a = 0ULL;
-    char s[] = "%.llux\n";
-    if (printf(s, a)
-    == ft_printf(s, a))
+    unsigned long long a= ULLONG_MAX,b = 0;
+    char s[] = "%#110llx!%-100.4llx!\n";
+    if (printf(s, a, b)
+    == ft_printf(s, a, b))
         printf("YES\n");
     else
+    {
         printf("NO\n");
+    }
 }
+
 /*
  git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c
  git commit -m "autocommit"

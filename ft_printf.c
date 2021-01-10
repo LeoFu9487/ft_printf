@@ -1,17 +1,6 @@
 #include "ft_printf.h"
 
 /*
-flags : -0.* l ll h hh # + ' '(space)
-*/
-
-/*
-conventions : cspdiuxX%nfge
-*/
-
-/*
-consider multiple flag for one time
-*/
-/*
 static void print_form(t_form *form)
 {
 
