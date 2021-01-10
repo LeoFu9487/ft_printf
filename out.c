@@ -521,8 +521,6 @@ static void ft_6_1(t_form form, va_list *arg, int *cnt)
         {
             while (form.width-- > form.precision)
                 ft_putchar_fd('0', 1);
-            while (form.precision-- > 0)
-                ft_putchar_fd('0', 1);
         }
         else
         {
@@ -611,14 +609,60 @@ static void ft_6(t_form form, va_list *arg, int *cnt)
 static void ft_7(t_form form, va_list *arg, int *cnt)
 {
     //X
+    //same as ft_6
 }
+
+static void ft_9_0(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_9_1(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_9_2(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_9_3(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_9_(t_form form, va_list *arg, int *cnt)
+{
+    int *va;
+
+    va = va_arg(*arg, int*);
+    *va = *cnt;
+}
+
 static void ft_9(t_form form, va_list *arg, int *cnt)
 {
     //n
+    if (form.length == 0)
+        ft_9_0(form, arg, cnt);
+    else if (form.length == 1)
+        ft_9_1(form, arg, cnt);
+    else if (form.length == 2)
+        ft_9_2(form, arg, cnt);
+    else if (form.length == 3)
+        ft_9_3(form, arg, cnt);
+    else
+        ft_9_(form, arg, cnt);
 }
 static void ft_10(t_form form, va_list *arg, int *cnt)
 {
     //f
+    /*
+    flags : all
+    '-' '+' ' ' '#' '0'
+    precision
+    */
+
 }
 static void ft_11(t_form form, va_list *arg, int *cnt)
 {

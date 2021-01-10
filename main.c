@@ -18,18 +18,24 @@
     0123456789101112
 */
 
+
+
 #include <limits.h>
 int main()
 {
-    unsigned long long a= ULLONG_MAX,b = 0;
-    char s[] = "%#110llx!%-100.4llx!\n";
-    if (printf(s, a, b)
-    == ft_printf(s, a, b))
-        printf("YES\n");
+    //unsigned long long a= ULLONG_MAX;
+    //int b,c;
+    /*char s[] = "%#110llx!%n!\n";
+    if (printf(s, a, &b)
+    == ft_printf(s, a, &c))
+        printf("YES\n%d %d\n",b,c);
     else
     {
-        printf("NO\n");
-    }
+        printf("NO\n%d %d\n",b,c);
+    }*/
+    int n_chars = 0;
+    ft_printf("Hello, World%n", &n_chars);
+    printf("\n%d\n",n_chars);
 }
 
 /*
@@ -39,4 +45,8 @@ int main()
 */
 /*
 try long long min
+*/
+/*
+check all the malloc and remember to free everything
+make sure every function is allowed
 */
