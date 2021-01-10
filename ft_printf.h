@@ -38,5 +38,7 @@ void    ft_itoa_base(void* num, const char *base);
 void    ft_itoa_base_ull(unsigned long long num, const char *base);
 int     ft_putll(long long int num, t_form form);
 int     ft_putull(unsigned long long int num, t_form form);
+void    ft_putdouble(double num, t_form form, int len);
+
 
 #endif

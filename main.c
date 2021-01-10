@@ -33,15 +33,13 @@ int main()
     {
         printf("NO\n%d %d\n",b,c);
     }*/
-    int n_chars = 0;
-    ft_printf("Hello, World%n", &n_chars);
-    printf("\n%d\n",n_chars);
 }
 
 /*
  git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c
- git commit -m "autocommit"
+ git commit -m "%n"
  git push
+
 */
 /*
 try long long min

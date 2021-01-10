@@ -74,3 +74,17 @@ int    ft_putull(unsigned long long int num, t_form form)
     ft_putull_sub(num);
     return (cnt[0]);
 }
+
+static void ft_putdouble_sub(double num, int len)
+{
+}
+
+void    ft_putdouble(double num, t_form form, int len)
+{
+    double ct[1];
+
+    //len means how many digits before decimal point
+
+     // care about precision and flag[3]
+     //round up
+}
