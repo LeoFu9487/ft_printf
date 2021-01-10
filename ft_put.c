@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void    ft_putll_sub(long long int num)
+static void    ft_putll_sub(long long int num)
 {
     int out;
 
@@ -37,5 +37,40 @@ int    ft_putll(long long int num, t_form form)
     else
         cnt[0] += cnt[1];
     ft_putll_sub(num);
+    return (cnt[0]);
+}
+
+static void    ft_putull_sub(unsigned long long int num)
+{
+    int out;
+
+    if (num > 9ULL)
+        ft_putull_sub(num / 10ULL);
+    out = (int)(num % 10ULL);
+    ft_putnbr_fd(out, 1);
+}
+
+int    ft_putull(unsigned long long int num, t_form form)
+{
+    int cnt[2];
+    unsigned long long int num2;
+
+    cnt[0] = 0;
+    cnt[1] = 1;
+    num2 = num;
+    while (num2 > 9ULL)
+    {
+        cnt[1]++;
+        num2 /= 10ULL;
+    }
+    if (form.precision > cnt[1])
+    {
+        cnt[0] += form.precision;
+        while (form.precision-- > cnt[1])
+            ft_putchar_fd('0', 1);
+    }
+    else
+        cnt[0] += cnt[1];
+    ft_putull_sub(num);
     return (cnt[0]);
 }

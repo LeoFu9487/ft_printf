@@ -22,16 +22,19 @@
 int main()
 {
     //int a = 55;
-    long long int a;
-    a = 0LL;
-    if (printf("%+ 2.lld\n", a)
-    == ft_printf("%+ 2.lld\n", a))
+    unsigned long long int a;
+    a = 0ULL;
+    char s[] = "%.llux\n";
+    if (printf(s, a)
+    == ft_printf(s, a))
         printf("YES\n");
     else
         printf("NO\n");
 }
 /*
- git add ft_itoa.c ft_printf.c ft_printf.h parse.c out.c ft_put.c
+ git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c
+ git commit -m "autocommit"
+ git push
 */
 /*
 try long long min

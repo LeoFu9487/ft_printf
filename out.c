@@ -392,9 +392,97 @@ static void ft_3(t_form form, va_list *arg, int *cnt)
     else
         ft_3_(form, arg, cnt);
 }
+
+static void ft_5_0(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_5_1(t_form form, va_list *arg, int *cnt)
+{
+    unsigned long long int   ct[4];
+
+    ct[1] = ct[0] = va_arg(*arg, unsigned long long int);
+    if (ct[0] == 0ULL && form.precision == 0)
+    {
+        (*cnt) += form.width;
+        while ((form.width)-- > 0)
+            ft_putchar_fd(' ', 1);
+        return ;
+    }
+    ct[2] = 1ULL;
+    while (ct[1] > 9ULL)
+    {
+        ct[2]++;
+        ct[1] /= 10ULL;
+    }
+    if (form.precision != -1)
+        form.flag[4] = 0;
+    if (form.width > (int)ct[2] && form.width > form.precision)
+    {
+        (*cnt) += form.width;
+        if (form.flag[0])
+        {
+            ft_putull(ct[0], form);
+            while (form.width > (int)ct[2] && form.width > form.precision)
+            {
+                form.width--;
+                ft_putchar_fd(' ', 1);
+            }
+        }
+        else if (form.flag[4])
+        {
+            while (form.width > (int)ct[2] && form.width > form.precision)
+            {
+                ft_putchar_fd('0', 1);
+                form.width--;
+            }
+            ft_putull(ct[0], form);
+        }
+        else
+        {
+            while (form.width > (int)ct[2] && form.width > form.precision)
+            {
+                ft_putchar_fd(' ', 1);
+                form.width--;
+            }
+            ft_putull(ct[0], form);
+        }
+    }
+    else
+    {
+        (*cnt) += ft_putull(ct[0], form);
+    }
+}
+
+static void ft_5_2(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_5_3(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
+static void ft_5_(t_form form, va_list *arg, int *cnt)
+{
+
+}
+
 static void ft_5(t_form form, va_list *arg, int *cnt)
 {
     //u
+    if (form.length == 0)
+        ft_5_0(form, arg, cnt);
+    else if (form.length == 1)
+        ft_5_1(form, arg, cnt);
+    else if (form.length == 2)
+        ft_5_2(form, arg, cnt);
+    else if (form.length == 3)
+        ft_5_3(form, arg, cnt);
+    else
+        ft_5_(form, arg, cnt);
 }
 static void ft_6(t_form form, va_list *arg, int *cnt)
 {
