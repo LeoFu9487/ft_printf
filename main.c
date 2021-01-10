@@ -22,8 +22,10 @@
 int main()
 {
     //int a = 55;
-    if (printf("%50.30lld\n", LONG_LONG_MIN)
-    == ft_printf("%50.30lld\n", LONG_LONG_MIN))
+    long long int a;
+    a = 0LL;
+    if (printf("%+ 2.lld\n", a)
+    == ft_printf("%+ 2.lld\n", a))
         printf("YES\n");
     else
         printf("NO\n");

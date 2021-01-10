@@ -115,6 +115,7 @@ static void ft_3_1(t_form form, va_list *arg, int *cnt)
     /*
     problem : +, - , ' '(sign) should be the first
     deal with LLONG_MIN separately
+    deal with 0 separately
     -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
     if left pad 0 then sign before 0
     if left pad ' ' then ' ' before sign
@@ -123,6 +124,45 @@ static void ft_3_1(t_form form, va_list *arg, int *cnt)
     long long int   ct[4];
 
     ct[1] = ct[0] = va_arg(*arg, long long int);
+    if (ct[0] == 0LL && form.precision == 0)
+    {
+        if (form.flag[0])
+        {
+            if (form.flag[1])
+            {
+                ft_putchar_fd('+', 1);
+                (*cnt)++;
+                (form.width)--;
+            }
+            else if (form.flag[2])
+            {
+                ft_putchar_fd(' ', 1);
+                (*cnt)++;
+                (form.width)--;
+            }
+            if (form.width > 0)
+                (*cnt) += form.width;
+            while ((form.width)-- > 0)
+                ft_putchar_fd(' ', 1);
+        }
+        else
+        {
+            if (form.flag[1] || form.flag[2])
+            {
+                (*cnt)++;
+                (form.width)--;
+            }
+            if (form.width > 0)
+                (*cnt) += form.width;
+            while ((form.width)-- > 0)
+                ft_putchar_fd(' ', 1);
+            if (form.flag[1])
+                ft_putchar_fd('+', 1);
+            else if (form.flag[2])
+                ft_putchar_fd(' ', 1);
+        }
+        return ;
+    }
     ct[2] = 1LL;
     while (ct[1] > 9LL || ct[1] < -9LL)
     {
@@ -298,6 +338,18 @@ static void ft_3_1(t_form form, va_list *arg, int *cnt)
     }
     else
     {
+        //no width
+        if (form.flag[1])
+        {
+            ft_putchar_fd('+', 1);
+            (*cnt)++;
+        }
+
+        else if (form.flag[2])
+        {
+            (*cnt)++;
+            ft_putchar_fd(' ', 1);
+        }
         (*cnt) += ft_putll(ct[0], form);
     }
 }
