@@ -26,8 +26,8 @@ int main()
     //printf("%.f\n",0.4999999);
     //unsigned long long a= ULLONG_MAX;
     //int b,c;
-    double a = -99.153415313515313545373437864647873465374364876743749373;
-    char s[] = "%0-+100.45fx\n";
+    double a = 99.0;
+    char s[] = "%#+100.2fx\n";
     if (printf(s, a)
     == ft_printf(s, a))
         printf("YES\n");
@@ -35,11 +35,14 @@ int main()
     {
         printf("NO\n");
     }
+    /*
+    try integer input with zero precision
+    */
 }
 
 /*
  git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c
- git commit -m "%n"
+ git commit -m "%f"
  git push
 
 */

@@ -37,6 +37,7 @@ double  ft_round_up(double *num, int precision)
         ct[0]++;
     }
     //stack[0] -> before the decimal point
+    ct[0]--;
     if (stack[ct[0]] <= 4ULL)
     {
         if (ct[2] == -1)
@@ -44,16 +45,16 @@ double  ft_round_up(double *num, int precision)
         return (*num);
     }
     ct[1] = 1;
-    n[1] = 0.0;
-    while (--ct[0] > 0)
+    n[1] = 5.0;
+    while (--ct[0] >= 0)
     {
         if (ct[1])
         {
             stack[ct[0]]++;
             if (stack[ct[0]] >= 10ULL)
             {
-                stack[ct[0] - 1]++;
-                stack[ct[0]] %= 10ULL;
+                if (ct[0])
+                    stack[ct[0]] %= 10ULL;
             }
             else
                 ct[1] = 0;
@@ -61,8 +62,6 @@ double  ft_round_up(double *num, int precision)
         n[1] /= 10.0;
         n[1] += (double)stack[ct[0]];
     }
-    n[1] /= 10.0;
-    n[1] += (double)stack[0];
     if (ct[2] == -1)
         n[1] *= -1.0;
     return (*num = n[1]);
@@ -87,8 +86,8 @@ void    ft_putdouble(double num, t_form form, int len)
     while ((form.precision--) > 0)
     {
         num *= 10.0;
-        ft_putnbr_fd((int)num, 1);
         use = (unsigned long long)num;
+        ft_putnbr_fd((int)use, 1);
         num -= (double)use;
     }
 }
