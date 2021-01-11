@@ -23,20 +23,22 @@
 #include <limits.h>
 int main()
 {
+    //printf("%.f\n",0.4999999);
     //unsigned long long a= ULLONG_MAX;
     //int b,c;
-    /*char s[] = "%#110llx!%n!\n";
-    if (printf(s, a, &b)
-    == ft_printf(s, a, &c))
-        printf("YES\n%d %d\n",b,c);
+    double a = -99.153415313515313545373437864647873465374364876743749373;
+    char s[] = "%0-+100.45fx\n";
+    if (printf(s, a)
+    == ft_printf(s, a))
+        printf("YES\n");
     else
     {
-        printf("NO\n%d %d\n",b,c);
-    }*/
+        printf("NO\n");
+    }
 }
 
 /*
- git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c
+ git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c
  git commit -m "%n"
  git push
 

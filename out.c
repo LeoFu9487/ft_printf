@@ -666,7 +666,9 @@ static void ft_10(t_form form, va_list *arg, int *cnt)
     */
     if (form.precision == -1)
         form.precision = 6;
-    ct[1] = ct[0] = va_arg(*arg, double);
+    ct[0] = va_arg(*arg, double);
+    ct[1] = ft_round_up(ct, form.precision);
+    //round up ct[1] and  here
     use[0] = 1;//count the digits before the decimal point
     if (ct[1] < 0.0)
         ct[1] *= -1.0;
