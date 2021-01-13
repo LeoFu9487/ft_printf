@@ -2,52 +2,63 @@
 #include <stdio.h>
 
 /*
-    [flags][width][.precision][length]specifier
+	[flags][width][.precision][length]specifier
 
 
-    flags : '-' '+' ' ' '#' '0'
-    when there is + and ' ', ignore ' '
-    when there is - ignore 0 (only for left pad 0's)
-    width: number *
-    precision : .number .*
-    default 0
-    length : l ll h hh
-             1  2 3  4
-    convention :
-    cspdiuxX%nf g e
-    0123456789101112
+	flags : '-' '+' ' ' '#' '0'
+	when there is + and ' ', ignore ' '
+	when there is - ignore 0 (only for left pad 0's)
+	width: number *
+	precision : .number .*
+	default 0
+	length : l ll h hh
+			 1  2 3  4
+	convention :
+	cspdiuxX%nf g e
+	0123456789101112
 */
 
 
-
+#include <float.h>
 #include <limits.h>
 int main()
 {
-    //printf("%.f\n",0.4999999);
-    //unsigned long long a= ULLONG_MAX;
-    //int b,c;
-    double a = 99.0;
-    char s[] = "%#+100.2fx\n";
-    if (printf(s, a)
-    == ft_printf(s, a))
-        printf("YES\n");
-    else
-    {
-        printf("NO\n");
-    }
-    /*
-    try integer input with zero precision
-    */
+	/*double a = 1e300 * -1e20;//= DBL_MAX - 10.0;
+	int n;
+	printf("%.300f\n", a);
+	ft_printf("%-100.300f%n\n",a, &n);
+	printf("%d\n", n);
+	*/
+	//unsigned long long a= ULLONG_MAX;
+	//int b,c;
+	double a = 99.99999e10;
+	int b,c;
+	char s[] = "%#0100.50ex\n";
+	b = printf(s, a);
+	c = ft_printf(s, a);
+	if ( b == c)
+		printf("YES %d\n", b);
+	else
+	{
+		printf("NO %d %d\n",b,c);
+	}
+	/*
+	try integer input with zero precision
+	*/
+	return 0;
 }
 
 /*
- git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c
+ git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c ft_put_flag_e.c
  git commit -m "%f"
  git push
 
 */
 /*
-try long long min
+how to fix double max
+*/
+/*
+Do I need to print inf for %f%e%g ? 
 */
 /*
 check all the malloc and remember to free everything
