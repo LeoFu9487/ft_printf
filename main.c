@@ -31,7 +31,11 @@ int main()
 	*/
 	//unsigned long long a= ULLONG_MAX;
 	//int b,c;
-	double a = 99.99999e10;
+	ft_printf("%s\n",0);
+	ft_printf("%.10s\n",0);
+	ft_printf("%.2s\n",0);
+	ft_printf("%010s\n",0);
+	/*double a = 99.99999e10;
 	int b,c;
 	char s[] = "%#0100.50ex\n";
 	b = printf(s, a);
@@ -42,6 +46,7 @@ int main()
 	{
 		printf("NO %d %d\n",b,c);
 	}
+	*/
 	/*
 	try integer input with zero precision
 	*/
@@ -50,7 +55,7 @@ int main()
 
 /*
  git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c ft_put_flag_e.c
- git commit -m "%f"
+ git commit -m "%e %g"
  git push
 
 */

@@ -52,10 +52,18 @@ static void ft_1(t_form form, va_list *arg, int *cnt)
 	s
 	length 0 not finished yet
 	*/
-	if (form.precision != -1)
-		out = ft_substr(va_arg(*arg, char*), 0, form.precision);
+	out = va_arg(*arg, char*);
+	if (out == NULL)
+	{
+		if (form.precision == -1)
+			out = ft_strdup("(null)");
+		else
+			out = ft_substr("(null)", 0, form.precision);
+	}
+	else if (form.precision != -1)
+		out = ft_substr(out, 0, form.precision);
 	else
-		out = ft_strdup(va_arg(*arg, char*));
+		out = ft_strdup(out);
 	len = ft_strlen(out);
 	if (form.width > len)
 	{
