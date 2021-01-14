@@ -684,8 +684,15 @@ static void ft_10(t_form form, va_list *arg, int *cnt)
 		form.width = (use[0] > form.width ? use[0] : form.width);
 		(*cnt) += form.width;
 		if (!form.flag[0])
-			while (form.width-- > use[0])
-				ft_putchar_fd(' ', 1);
+		{
+			//activate this if the flag[4] works
+			/*if (form.flag[4])
+				while (form.width-- > use[0])
+					ft_putchar_fd('0', 1);
+			else*/
+				while (form.width-- > use[0])
+					ft_putchar_fd(' ', 1);
+		}
 		if (ct[0] < 0.0)
 			ft_putchar_fd('-', 1);
 		else if (form.flag[1])
@@ -775,6 +782,10 @@ static void ft_10(t_form form, va_list *arg, int *cnt)
 static void ft_11(t_form form, va_list *arg, int *cnt)
 {
 	//g
+	double	num;
+
+	num = va_arg(*arg, double);
+	ft_put_flag_g(num, form, cnt);
 }
 static void ft_12(t_form form, va_list *arg, int *cnt)
 {
@@ -787,10 +798,10 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 	/*
 	[number]e[sign][two digits or three digits]
 	*/
-	double	n[100];
-	int		ct[100];
-	int sign = 1;
+	double	n[5];
+	int		ct[5];
 
+	ct[4] = 1;
 	n[0] = va_arg(*arg, double);
 	if (form.precision == -1)
 		form.precision = 6;
@@ -803,8 +814,15 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 		form.width = (ct[0] > form.width ? ct[0] : form.width);
 		(*cnt) += form.width;
 		if (!form.flag[0])
-			while (form.width-- > ct[0])
-				ft_putchar_fd(' ', 1);
+		{
+			// activate this if flag[4] works
+			/*if (form.flag[4])
+				while (form.width-- > ct[0])
+					ft_putchar_fd('0', 1);
+			else*/
+				while (form.width-- > ct[0])
+					ft_putchar_fd(' ', 1);
+		}
 		if (n[0] < 0.0)
 			ft_putchar_fd('-', 1);
 		else if (form.flag[1])
@@ -820,7 +838,7 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 	if (n[0] < 0.0)
 	{
 		n[0] *= -1.0;
-		sign = -1;
+		ct[4] = -1;
 	}
 	while (n[0] >= 10.0)
 	{
@@ -844,7 +862,7 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 		ct[1] += 1 + form.precision;
 	if (ct[0] > 99 || ct[0] < -99)
 		ct[1] += 1;
-	if (sign == -1 || form.flag[1] || form.flag[2])
+	if (ct[4] == -1 || form.flag[1] || form.flag[2])
 		ct[1]++;
 	form.width = (ct[1] > form.width ? ct[1] : form.width);
 	(*cnt) += form.width;
@@ -852,7 +870,7 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 	if ((!form.flag[0]) && (!form.flag[4]))
 		while (form.width-- > ct[1])
 			ft_putchar_fd(' ', 1);
-	if (sign == -1)
+	if (ct[4] == -1)
 	{
 		ft_putchar_fd('-', 1);
 		n[0] *= -1.0;

@@ -41,5 +41,6 @@ int		ft_putull(unsigned long long int num, t_form form);
 void	ft_putdouble(double num, t_form form, int len);
 double	ft_round_up(double *num, int precision);
 void	ft_put_flag_e(double num, int sc, t_form form);
+void	ft_put_flag_g(double num, t_form form, int *cnt);
 
 #endif

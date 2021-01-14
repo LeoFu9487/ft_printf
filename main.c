@@ -31,10 +31,6 @@ int main()
 	*/
 	//unsigned long long a= ULLONG_MAX;
 	//int b,c;
-	ft_printf("%s\n",0);
-	ft_printf("%.10s\n",0);
-	ft_printf("%.2s\n",0);
-	ft_printf("%010s\n",0);
 	/*double a = 99.99999e10;
 	int b,c;
 	char s[] = "%#0100.50ex\n";
@@ -54,8 +50,8 @@ int main()
 }
 
 /*
- git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c ft_put_flag_e.c
- git commit -m "%e %g"
+ git add ft_itoa_base.c ft_printf.c ft_printf.h parse.c out.c ft_put.c main.c ft_putdouble.c ft_put_flag_e.c ft_put_flag_g.c
+ git commit -m "%g"
  git push
 
 */
@@ -64,6 +60,10 @@ how to fix double max
 */
 /*
 Do I need to print inf for %f%e%g ? 
+do the flags work ? flag[4]
+*/
+/*
+when I put too many digits of double, I need to put 0 instead ? 
 */
 /*
 check all the malloc and remember to free everything
