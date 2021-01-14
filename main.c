@@ -31,9 +31,10 @@ int main()
 	*/
 	//unsigned long long a= ULLONG_MAX;
 	//int b,c;
-	/*double a = 99.99999e10;
+	double a = -9.448487;
+	
 	int b,c;
-	char s[] = "%#0100.50ex\n";
+	char s[] = "%e\n";
 	b = printf(s, a);
 	c = ft_printf(s, a);
 	if ( b == c)
@@ -42,10 +43,12 @@ int main()
 	{
 		printf("NO %d %d\n",b,c);
 	}
-	*/
+	
 	/*
 	try integer input with zero precision
+	try %.0%
 	*/
+	
 	return 0;
 }
 

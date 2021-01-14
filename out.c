@@ -620,6 +620,30 @@ static void ft_7(t_form form, va_list *arg, int *cnt)
 	//same as ft_6
 }
 
+static void	ft_8(t_form form, va_list *arg, int *cnt)
+{
+	//%% 
+	//try precision zero
+	form.width = (form.width < 1 ? 1 : form.width);
+	(*cnt) += form.width;
+	if (!form.flag[0])
+	{
+		while (form.width-- > 1)
+		{
+			if (form.flag[4])
+				ft_putchar_fd('0', 1);
+			else
+				ft_putchar_fd(' ', 1);
+		}
+	}
+	ft_putchar_fd('%', 1);
+	if (form.flag[0])
+	{
+		while (form.width-- > 1)
+			ft_putchar_fd(' ', 1);
+	}
+}
+
 static void ft_9_0(t_form form, va_list *arg, int *cnt)
 {
 
@@ -675,7 +699,7 @@ static void ft_10(t_form form, va_list *arg, int *cnt)
 	ct[0] = va_arg(*arg, double);
 	if (form.flag[0])
 		form.flag[4] = 0;
-	if (ct[0] > 1e308 || ct[0] < -1e308)
+	if (ct[0] > 1.7976931348623158e+308 || ct[0] < -1.7976931348623158e+308)
 	{
 		// if it shows inf, +inf, -inf etc. and ignore flag[4]
 		use[0] = 3;
@@ -788,7 +812,7 @@ static void ft_11(t_form form, va_list *arg, int *cnt)
 	n[0] = va_arg(*arg, double);
 	if (form.precision == -1)
 		form.precision = 6;
-	if (n[0] > 1e308 || n[0] < -1e308)
+	if (n[0] > 1.7976931348623158e+308 || n[0] < -1.7976931348623158e+308)
 	{
 		// if it shows inf, +inf, -inf etc. and ignore flag[4]
 		ct[0] = 3;
@@ -837,7 +861,7 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 	n[0] = va_arg(*arg, double);
 	if (form.precision == -1)
 		form.precision = 6;
-	if (n[0] > 1e308 || n[0] < -1e308)
+	if (n[0] > 1.7976931348623158e+308 || n[0] < -1.7976931348623158e+308)
 	{
 		// if it shows inf, +inf, -inf etc. and ignore flag[4]
 		ct[0] = 3;
@@ -903,10 +927,7 @@ static void ft_12(t_form form, va_list *arg, int *cnt)
 		while (form.width-- > ct[1])
 			ft_putchar_fd(' ', 1);
 	if (ct[4] == -1)
-	{
 		ft_putchar_fd('-', 1);
-		n[0] *= -1.0;
-	}
 	else if (form.flag[1])
 		ft_putchar_fd('+', 1);
 	else if (form.flag[2])
@@ -940,10 +961,7 @@ void	ft_out(t_form form, va_list *arg, int *cnt)
 	if (form.convention == 7)
 		ft_7(form, arg, cnt);
 	if (form.convention == 8)
-	{
-		ft_putchar_fd('%', 1);
-		(*cnt)++;
-	}
+		ft_8(form, arg, cnt);
 	if (form.convention == 9)
 		ft_9(form, arg, cnt);
 	if (form.convention == 10)

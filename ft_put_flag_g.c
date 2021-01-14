@@ -28,7 +28,7 @@ static int	ft_cnt_power(double num, t_form form)
 
 static void	ft_put_as_f(double num, t_form form, int *cnt)
 {
-	// all flags
+	// all flags : - + ' ' # 0
 	// precision is different (need to ignore, but keep . when #)
 	
 }
