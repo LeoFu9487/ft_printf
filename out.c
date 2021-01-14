@@ -782,10 +782,42 @@ static void ft_10(t_form form, va_list *arg, int *cnt)
 static void ft_11(t_form form, va_list *arg, int *cnt)
 {
 	//g
-	double	num;
+	double	n[5];
+	int		ct[5];
 
-	num = va_arg(*arg, double);
-	ft_put_flag_g(num, form, cnt);
+	n[0] = va_arg(*arg, double);
+	if (form.precision == -1)
+		form.precision = 6;
+	if (n[0] > 1e308 || n[0] < -1e308)
+	{
+		// if it shows inf, +inf, -inf etc. and ignore flag[4]
+		ct[0] = 3;
+		if (n[0] < 0.0 || form.flag[1] || form.flag[2])
+			ct[0]++;
+		form.width = (ct[0] > form.width ? ct[0] : form.width);
+		(*cnt) += form.width;
+		if (!form.flag[0])
+		{
+			// activate this if flag[4] works
+			/*if (form.flag[4])
+				while (form.width-- > ct[0])
+					ft_putchar_fd('0', 1);
+			else*/
+				while (form.width-- > ct[0])
+					ft_putchar_fd(' ', 1);
+		}
+		if (n[0] < 0.0)
+			ft_putchar_fd('-', 1);
+		else if (form.flag[1])
+			ft_putchar_fd('+', 1);
+		else if (form.flag[2])
+			ft_putchar_fd(' ', 1);
+		ft_putstr_fd("inf", 1);
+		while ((form.width)-- > ct[0])
+			ft_putchar_fd(' ', 1);
+		return ;
+	}
+	ft_put_flag_g(n[0], form, cnt);
 }
 static void ft_12(t_form form, va_list *arg, int *cnt)
 {
