@@ -2,8 +2,7 @@
 #include <stdio.h>
 
 /*
-	[flags][width][.precision][length]specifier
-
+	
 
 	flags : '-' '+' ' ' '#' '0'
 	when there is + and ' ', ignore ' '
@@ -12,10 +11,12 @@
 	precision : .number .*
 	default 0
 	length : l ll h hh
-			 1  2 3  4
+			 0  1 2  3
 	convention :
 	cspdiuxX%nf g e
 	0123456789101112
+
+
 */
 
 
