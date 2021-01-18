@@ -47,6 +47,11 @@ static void ft_get_width(char **str, va_list *arg, t_form *form)
 	if (**str == '*')
 	{
 		form->width = va_arg(*arg, int);
+		if (form->width < 0)
+		{
+			(form->width) *= -1;
+			(form->flag[0])++;
+		}
 		(*str)++;
 	}
 	else
