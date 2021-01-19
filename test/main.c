@@ -36,7 +36,7 @@ void check()
 int main()
 {
 	fail = 0;
-	printf("%d\n",ft_printf("%-4s\n", "123"));
+	printf("%d\n",ft_printf("%-4s\n", "456"));
 	#ifdef TEST_0
 		printf("\n\n");
 

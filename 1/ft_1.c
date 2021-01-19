@@ -19,20 +19,23 @@ void ft_1(t_form form, va_list *arg, int *cnt)
 	if (form.width > form.precision)
 	{
 		(*cnt) += form.width;
+		form.width -= form.precision;
 		if (form.flag[0] == 0)
 		{
 			if (form.flag[4])
-				while (form.width-- > form.precision)
+				while (form.width--)
 					ft_putchar_fd('0', 1);
 			else
-				while (form.width-- > form.precision)
+				while (form.width--)
 					ft_putchar_fd(' ', 1);
 		}
 		while (form.precision-- > 0)
 			ft_putchar_fd(*(out++), 1);
-		if (form.flag[0])
-			while (form.width-- > form.precision)
+		if (form.flag[0] == 1)
+		{
+			while (form.width--)
 				ft_putchar_fd(' ', 1);
+		}
 		return ;
 	}
 	(*cnt) += form.precision;
