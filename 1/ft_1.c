@@ -3,7 +3,6 @@
 void ft_1(t_form form, va_list *arg, int *cnt)
 {
 	char	*out;
-	int		len;
 
 	if (form.length == 0)
 	{
@@ -12,36 +11,31 @@ void ft_1(t_form form, va_list *arg, int *cnt)
 	}
 	out = va_arg(*arg, char*);
 	if (out == NULL)
-	{
-		if (form.precision == -1)
-			out = ft_strdup("(null)");
-		else
-			out = ft_substr("(null)", 0, form.precision);
-	}
-	else if (form.precision != -1)
-		out = ft_substr(out, 0, form.precision);
-	else
-		out = ft_strdup(out);
-	len = ft_strlen(out);
-	if (form.width > len)
+		out = "(null)";
+	if (form.precision == -1)
+		form.precision = (int)ft_strlen(out);
+	else if (form.precision > (int)ft_strlen(out))
+		form.precision = (int)ft_strlen(out);
+	if (form.width > form.precision)
 	{
 		(*cnt) += form.width;
 		if (form.flag[0] == 0)
 		{
 			if (form.flag[4])
-				while (form.width-- > len)
+				while (form.width-- > form.precision)
 					ft_putchar_fd('0', 1);
 			else
-				while (form.width-- > len)
+				while (form.width-- > form.precision)
 					ft_putchar_fd(' ', 1);
 		}
-		ft_putstr_fd(out, 1);
+		while (form.precision-- > 0)
+			ft_putchar_fd(*(out++), 1);
 		if (form.flag[0])
-			while (form.width-- > len)
+			while (form.width-- > form.precision)
 				ft_putchar_fd(' ', 1);
 		return ;
 	}
-	(*cnt) += len;
-	ft_putstr_fd(out, 1);
-	free(out);
+	(*cnt) += form.precision;
+	while (form.precision-- > 0)
+			ft_putchar_fd(*(out++), 1);
 }
