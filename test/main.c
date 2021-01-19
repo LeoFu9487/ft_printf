@@ -21,6 +21,7 @@
 #include <float.h>
 #include <limits.h>
 int a,b;
+int fail;
 void check()
 {
 	if (a == b){
@@ -28,16 +29,120 @@ void check()
 	}
 	else{
 		printf("NO : %d %d \n", a, b);
-		printf("press ctrl + c if you want to end the program\n");
-		while (1){
-			
-		}
+		fail = 1;
 	}
 }
 
 int main()
 {
+	fail = 0;
+	#ifdef TEST_0
+		printf("\n\n");
 
+		if (fail){
+			printf("TEST_0 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_0 : SUCCEED\n");
+	#endif
+	#ifdef TEST_1
+		if (fail){
+			printf("TEST_1 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_1 : SUCCEED\n");
+	#endif
+	#ifdef TEST_2
+		if (fail){
+			printf("TEST_2 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_2 : SUCCEED\n");
+	#endif
+	#ifdef TEST_3
+		if (fail){
+			printf("TEST_3 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_3 : SUCCEED\n");
+	#endif
+	#ifdef TEST_4
+		if (fail){
+			printf("TEST_4 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_4 : SUCCEED\n");
+	#endif
+	#ifdef TEST_5
+		if (fail){
+			printf("TEST_5 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_5 : SUCCEED\n");
+	#endif
+	#ifdef TEST_6
+		if (fail){
+			printf("TEST_6 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_6 : SUCCEED\n");
+	#endif
+	#ifdef TEST_7
+		if (fail){
+			printf("TEST_7 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_7 : SUCCEED\n");
+	#endif
+	#ifdef TEST_8
+		if (fail){
+			printf("TEST_8 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_8 : SUCCEED\n");
+	#endif
+	#ifdef TEST_9
+		if (fail){
+			printf("TEST_9 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_9 : SUCCEED\n");
+	#endif
+	#ifdef TEST_10
+		if (fail){
+			printf("TEST_10 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_10 : SUCCEED\n");
+	#endif
+	#ifdef TEST_11
+		if (fail){
+			printf("TEST_11 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_11 : SUCCEED\n");
+	#endif
+	#ifdef TEST_12
+		if (fail){
+			printf("TEST_12 : FAIL\n");
+			return (0);
+		}
+
+		printf("TEST_12 : SUCCEED\n");
+	#endif
+	printf("SUCCEED ! \nGood Job !\n");
 	/*long long n = -9223372036854775807LL;
 	n--;
 	a = printf("%lld\n", LLMIN);
