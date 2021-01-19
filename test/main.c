@@ -37,7 +37,8 @@ void check()
 
 int main()
 {
-	long long n = -9223372036854775807LL;
+
+	/*long long n = -9223372036854775807LL;
 	n--;
 	a = printf("%lld\n", LLMIN);
 	b = ft_printf("%lld\n", LLMIN);
@@ -60,37 +61,8 @@ int main()
 	a = printf("%lld%lln\n", 0LL, &n);
 	b = ft_printf("%lld%lln\n", 0LL, &n);
 	check();
+	*/
 
-
-	//b = ft_printf("%50%%50.30%%.15%%015%%*.*%\n",-20,15);
-	//check();
-	//a = printf("%s\n, ");
-	/*double a = 1e300 * -1e20;//= DBL_MAX - 10.0;
-	int n;
-	printf("%.300f\n", a);
-	ft_printf("%-100.300f%n\n",a, &n);
-	printf("%d\n", n);
-	*/
-	//unsigned long long a= ULLONG_MAX;
-	//int b,c;
-	/*double a = -9.448487;
-	
-	int b,c;
-	char s[] = "%e\n";
-	b = printf(s, a);
-	c = ft_printf(s, a);
-	if ( b == c)
-		printf("YES %d\n", b);
-	else
-	{
-		printf("NO %d %d\n",b,c);
-	}
-	*/
-	/*
-	try integer input with zero precision
-	try %.0%
-	*/
-	
 	return 0;
 }
 

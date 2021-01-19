@@ -50,6 +50,12 @@ fclean : clean
 	rm -rf $(NAME)
 	$(MAKE) fclean -C ./Libft
 
+git : 
+	git add *
+	git commit -m "autocommit"
+	git push
+# try to modify every kind of file (in libft, .c, .h, .o etc.) and recompile
+
 # Did I clean the libft.a that I copied ?
 
 re : fclean all
