@@ -4,6 +4,9 @@
 # include <stdarg.h>
 # include "../Libft/libft.h"
 
+#define LLMIN (-9223372036854775807LL - 1LL)
+#define LL_STR "9223372036854775808"
+
 typedef struct  s_form
 {
 	/*
@@ -71,13 +74,13 @@ void	ft_7_0(t_form form, va_list *arg, int *cnt);
 void	ft_7_1(t_form form, va_list *arg, int *cnt);
 void	ft_7_2(t_form form, va_list *arg, int *cnt);
 void	ft_7_3(t_form form, va_list *arg, int *cnt);
-void	ft_8(t_form form, va_list *arg, int *cnt);
+void	ft_8(t_form form, int *cnt);
 void	ft_9(t_form form, va_list *arg, int *cnt);
-void	ft_9_(t_form form, va_list *arg, int *cnt);
-void	ft_9_0(t_form form, va_list *arg, int *cnt);
-void	ft_9_1(t_form form, va_list *arg, int *cnt);
-void	ft_9_2(t_form form, va_list *arg, int *cnt);
-void	ft_9_3(t_form form, va_list *arg, int *cnt);
+void	ft_9_(va_list *arg, int *cnt);
+void	ft_9_0(va_list *arg, int *cnt);
+void	ft_9_1(va_list *arg, int *cnt);
+void	ft_9_2(va_list *arg, int *cnt);
+void	ft_9_3(va_list *arg, int *cnt);
 void	ft_10(t_form form, va_list *arg, int *cnt);
 void	ft_11(t_form form, va_list *arg, int *cnt);
 void	ft_12(t_form form, va_list *arg, int *cnt);

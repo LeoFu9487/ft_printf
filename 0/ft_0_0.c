@@ -15,11 +15,11 @@ void ft_0_0(t_form form, va_list *arg, int *cnt)
 		else
 			while ((form.width)-- > 1)
 				ft_putchar_fd(' ', 1);
-		ft_putchar_fd(va_arg(*arg, wint_t), 1);
+		ft_putchar_fd(va_arg(*arg, int), 1);
 	}
 	else
 	{
-		ft_putchar_fd(va_arg(*arg, wint_t), 1);
+		ft_putchar_fd(va_arg(*arg, int), 1);
 		if (form.width > 1)
 		{
 			(*cnt) += form.width;

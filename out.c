@@ -17,7 +17,7 @@ void	ft_out(t_form form, va_list *arg, int *cnt)
 	if (form.convention == 7)
 		ft_7(form, arg, cnt);
 	if (form.convention == 8)
-		ft_8(form, arg, cnt);
+		ft_8(form, cnt);
 	if (form.convention == 9)
 		ft_9(form, arg, cnt);
 	if (form.convention == 10)

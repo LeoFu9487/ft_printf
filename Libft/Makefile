@@ -36,8 +36,6 @@ ft_lstclear.c	ft_lstdelone.c	ft_lstiter.c \
 ft_lstlast.c	ft_lstmap.c		ft_lstnew.c \
 ft_lstsize.c
 
-HEADER = libft.h
-
 OBJECTS = $(SRCS:.c=.o)
 
 BONUS_OBJECTS = $(BONUS_SRCS:.c=.o)
@@ -53,7 +51,7 @@ $(NAME): $(OBJECTS)
 	ranlib $(NAME)
 
 %.o : %.c $(HEADER)
-	$(CC) $(FLAGS) -I $(HEADER) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 		rm -rf $(OBJECTS) $(BONUS_OBJECTS)

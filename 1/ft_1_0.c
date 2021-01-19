@@ -1,13 +1,19 @@
 #include "../includes/ft_printf.h"
+/*
+	not finished yet
+	*/
 
 void ft_1_0(t_form form, va_list *arg, int *cnt)
 {
+	form.length = -1;
+	ft_1(form, arg, cnt);
+	/*
 	wchar_t	*out;
 	int		len;
 
-	/*
-	not finished yet
-	*/
+	
+	
+	
 	out = va_arg(*arg, wchar_t*);
 	if (out == NULL)
 	{
@@ -42,4 +48,5 @@ void ft_1_0(t_form form, va_list *arg, int *cnt)
 	(*cnt) += len;
 	ft_putstr_fd(out, 1);
 	free(out);
+	*/
 }

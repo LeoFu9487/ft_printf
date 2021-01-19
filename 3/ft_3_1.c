@@ -66,7 +66,7 @@ void ft_3_1(t_form form, va_list *arg, int *cnt)
 	if (ct[0] < 0LL)
 	{
 		form.precision++;
-		if (ct[0] == -9223372036854775808LL)
+		if (ct[0] == LLMIN)
 		{
 			if (form.width > 20 && form.width > form.precision)
 			{
@@ -77,7 +77,7 @@ void ft_3_1(t_form form, va_list *arg, int *cnt)
 					ct[3] = (long long int)form.precision;
 					while (ct[3]-- > 20)
 						ft_putchar_fd('0', 1);
-					ft_putstr_fd("9223372036854775808", 1);
+					ft_putstr_fd(LL_STR, 1);
 					while (form.width > 20 && form.width > form.precision)
 					{
 						ft_putchar_fd(' ', 1);
@@ -93,7 +93,7 @@ void ft_3_1(t_form form, va_list *arg, int *cnt)
 						ft_putchar_fd('0', 1);
 						form.width--;
 					}
-					ft_putstr_fd("9223372036854775808", 1);
+					ft_putstr_fd(LL_STR, 1);
 				}
 				else
 				{
@@ -106,7 +106,7 @@ void ft_3_1(t_form form, va_list *arg, int *cnt)
 					ft_putchar_fd('-', 1);
 					while ((form.precision)-- > 20)
 						ft_putchar_fd('0', 1);
-					ft_putstr_fd("9223372036854775808", 1);
+					ft_putstr_fd(LL_STR, 1);
 				}
 			}
 			else if (form.precision > 20)
@@ -115,12 +115,13 @@ void ft_3_1(t_form form, va_list *arg, int *cnt)
 				ft_putchar_fd('-', 1);
 				while (form.precision-- > 20)
 					ft_putchar_fd('0', 1);
-				ft_putstr_fd("9223372036854775808", 1);
+				ft_putstr_fd(LL_STR, 1);
 			}
 			else
 			{
 				(*cnt) += 20;
-				ft_putstr_fd("-9223372036854775808", 1);
+				ft_putchar_fd('-', 1);
+				ft_putstr_fd(LL_STR, 1);
 			}
 			return ;
 		}
@@ -243,4 +244,3 @@ void ft_3_1(t_form form, va_list *arg, int *cnt)
 		(*cnt) += ft_putll(ct[0], form);
 	}
 }
-

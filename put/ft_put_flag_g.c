@@ -30,12 +30,16 @@ static void	ft_put_as_f(double num, t_form form, int *cnt)
 {
 	// all flags : - + ' ' # 0
 	// precision is different (need to ignore, but keep . when #)
-	
+	(void)num;
+	(void)form;
+	(void)cnt;
 }
 
 static void	ft_put_as_e(double num, t_form form, int *cnt)
 {
-	
+	(void)num;
+	(void)form;
+	(void)cnt;
 }
 
 void	ft_put_flag_g(double num, t_form form, int *cnt)

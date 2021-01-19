@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void ft_9_3(t_form form, va_list *arg, int *cnt)
+void ft_9_3(va_list *arg, int *cnt)
 {
 	signed char	*va;
 

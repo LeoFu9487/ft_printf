@@ -15,7 +15,7 @@
 char				*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ans;
-	size_t	ct[2];
+	int		ct[2];
 	int		ascii[1000];
 
 	ct[0] = -1;

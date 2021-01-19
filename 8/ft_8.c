@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void	ft_8(t_form form, va_list *arg, int *cnt)
+void	ft_8(t_form form, int *cnt)
 {
 	//%% 
 	//try precision zero

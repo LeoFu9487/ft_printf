@@ -3,7 +3,7 @@
 void ft_1(t_form form, va_list *arg, int *cnt)
 {
 	char	*out;
-	int	 len;
+	int		len;
 
 	if (form.length == 0)
 	{

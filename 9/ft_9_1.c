@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void ft_9_1(t_form form, va_list *arg, int *cnt)
+void ft_9_1(va_list *arg, int *cnt)
 {
 	long long int	*va;
 

@@ -18,10 +18,10 @@ SRCS = ft_printf.c	out.c\
 	./11/ft_11.c\
 	./12/ft_12.c\
 	./parse/parse.c\
-	./put/ft_put.c	./put/ft_put_flag_e.c	./put/ft_put_flag_g.c	./ft_putdouble.c\
-	./utils/ft_itoa_base.c	./utils/ft_strdup_util.c
+	./put/ft_put.c	./put/ft_put_flag_e.c	./put/ft_put_flag_g.c	./put/ft_putdouble.c\
+	./utils/ft_itoa_base.c
 
-HEADER = ./includes/ft_printf.h
+HEADER = ./includes/
 
 OBJS = $(SRCS:.c=.o)
 

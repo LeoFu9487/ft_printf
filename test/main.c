@@ -1,6 +1,5 @@
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 #include <stdio.h>
-
 /*
 	
 
@@ -19,11 +18,53 @@
 
 */
 
-
 #include <float.h>
 #include <limits.h>
+int a,b;
+void check()
+{
+	if (a == b){
+		printf("YES : %d\n", a);
+	}
+	else{
+		printf("NO : %d %d \n", a, b);
+		printf("press ctrl + c if you want to end the program\n");
+		while (1){
+			
+		}
+	}
+}
+
 int main()
 {
+	long long n = -9223372036854775807LL;
+	n--;
+	a = printf("%lld\n", LLMIN);
+	b = ft_printf("%lld\n", LLMIN);
+	check();
+	
+	char *s = 0;
+	a = printf("%*.*s\n", -100, 10, s);
+	b = ft_printf("%*.*s\n", -100, 10, s);
+	check();
+	
+	a = printf("%*s\n", 12, "123");
+	b = ft_printf("%*s\n", 12, "123");
+	check();
+	
+	int x, y;
+	a = printf("%*lld%n\n",-100,1234LL, &x);
+	b = ft_printf("%*lld%n\n",-100,1234LL, &y);
+	check();
+	
+	a = printf("%lld%lln\n", 0LL, &n);
+	b = ft_printf("%lld%lln\n", 0LL, &n);
+	check();
+
+
+	//b = ft_printf("%50%%50.30%%.15%%015%%*.*%\n",-20,15);
+	//check();
+	//a = printf("%s\n, ");
 	/*double a = 1e300 * -1e20;//= DBL_MAX - 10.0;
 	int n;
 	printf("%.300f\n", a);
@@ -32,7 +73,7 @@ int main()
 	*/
 	//unsigned long long a= ULLONG_MAX;
 	//int b,c;
-	double a = -9.448487;
+	/*double a = -9.448487;
 	
 	int b,c;
 	char s[] = "%e\n";
@@ -44,7 +85,7 @@ int main()
 	{
 		printf("NO %d %d\n",b,c);
 	}
-	
+	*/
 	/*
 	try integer input with zero precision
 	try %.0%

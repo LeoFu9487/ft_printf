@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-static void ft_rec(unsigned int num, int cnt, unsigned int len, const char *base)
+static void ft_rec(unsigned long num, int cnt, unsigned int len, const char *base)
 {
 	if (cnt == 8)
 		return ;
@@ -18,7 +18,7 @@ void 	   ft_itoa_base(void* num, const char *base)
 		ft_putstr_fd("ERROR_IN_ITOA_BASE\n", 1);
 		return ;
 	}
-	ft_rec((unsigned int)num, 0, len, base);
+	ft_rec((unsigned long)num, 0, len, base);
 }
 
 static void ft_rec_ull(unsigned long long num, const char *base, unsigned long long len)
