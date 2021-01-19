@@ -28,7 +28,6 @@ OBJS = $(SRCS:.c=.o)
 $(NAME) : $(OBJS)
 	$(MAKE) bonus -C ./Libft
 	cp Libft/libft.a $(NAME)
-	$(CC) -c $(CFLAGS) -I $(HEADER) $(SRCS)
 	ar -rcs $(NAME) $(OBJS)
 	ranlib $(NAME)
 	
