@@ -1,9 +1,5 @@
 #include "../includes/ft_printf.h"
 
-/*
-all change
-*/
-
 static void	ft_3_0_0(t_form form, int *cnt)
 {
 	if (form.flag[1] || form.flag[2])

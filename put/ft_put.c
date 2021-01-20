@@ -27,27 +27,7 @@ static void	ft_putull_sub(unsigned long long int num)
 	ft_putnbr_fd(out, 1);
 }
 
-int	ft_putull(unsigned long long int num, t_form form)
+void	ft_putull(unsigned long long int num)
 {
-	int cnt[2];
-	unsigned long long int num2;
-
-	cnt[0] = 0;
-	cnt[1] = 1;
-	num2 = num;
-	while (num2 > 9ULL)
-	{
-		cnt[1]++;
-		num2 /= 10ULL;
-	}
-	if (form.precision > cnt[1])
-	{
-		cnt[0] += form.precision;
-		while (form.precision-- > cnt[1])
-			ft_putchar_fd('0', 1);
-	}
-	else
-		cnt[0] += cnt[1];
 	ft_putull_sub(num);
-	return (cnt[0]);
 }

@@ -1,253 +1,90 @@
 #include "../includes/ft_printf.h"
 
-/*
-not finished yet
-*/
-
-void ft_3_2(t_form form, va_list *arg, int *cnt)
+static void	ft_3_2_0(t_form form, int *cnt)
 {
-	(void)form;
-	(void)arg;
-	(void)cnt;
-	/*
-	problem : +, - , ' '(sign) should be the first
-	deal with LLONG_MIN separately
-	deal with 0 separately
-	-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
-	if left pad 0 then sign before 0
-	if left pad ' ' then ' ' before sign
-	*/
-	//lld
-/*	long long int   ct[4];
-
-	ct[1] = ct[0] = va_arg(*arg, long long int);
-	if (ct[0] == 0LL && form.precision == 0)
+	if (form.flag[1] || form.flag[2])
 	{
-		if (form.flag[0])
-		{
-			if (form.flag[1])
-			{
-				ft_putchar_fd('+', 1);
-				(*cnt)++;
-				(form.width)--;
-			}
-			else if (form.flag[2])
-			{
-				ft_putchar_fd(' ', 1);
-				(*cnt)++;
-				(form.width)--;
-			}
-			if (form.width > 0)
-				(*cnt) += form.width;
-			while ((form.width)-- > 0)
-				ft_putchar_fd(' ', 1);
-		}
-		else
-		{
-			if (form.flag[1] || form.flag[2])
-			{
-				(*cnt)++;
-				(form.width)--;
-			}
-			if (form.width > 0)
-				(*cnt) += form.width;
-			while ((form.width)-- > 0)
-				ft_putchar_fd(' ', 1);
-			if (form.flag[1])
-				ft_putchar_fd('+', 1);
-			else if (form.flag[2])
-				ft_putchar_fd(' ', 1);
-		}
-		return ;
+		(*cnt)++;
+		form.width--;
 	}
-	ct[2] = 1LL;
-	while (ct[1] > 9LL || ct[1] < -9LL)
+	(*cnt) += ft_max(0, form.width);
+	if (form.flag[0] == 0)
+		while (form.width-- > 0)
+			ft_putchar_fd(' ', 1);
+	if (form.flag[1] || form.flag[2])
+		ft_putchar_fd(form.flag[1] ? '+' : ' ', 1);
+	while (form.width-- > 0)
+		ft_putchar_fd(' ', 1);
+}
+
+static void	ft_3_2_1_0(t_form form, int *cnt)
+{
+	(*cnt) += ft_max(form.width, ft_max(form.precision + 1, 11));
+	form.precision = ft_max(form.precision - 10, 0);
+	form.width = ft_max(form.width - form.precision - 11, 0);
+	if (form.flag[0] == 0 && form.flag[4] == 0)
+		while (form.width-- > 0)
+			ft_putchar_fd(' ', 1);
+	ft_putchar_fd('-', 1);
+	while (form.precision-- > 0)
+		ft_putchar_fd('0', 1);
+	if (form.flag[4])
+		while (form.width-- > 0)
+			ft_putchar_fd('0', 1);
+	ft_putstr_fd(INTSTR, 1);
+	while (form.width-- > 0)
+		ft_putchar_fd(' ', 1);
+}
+
+static void	ft_3_2_1_1(t_form form, int *cnt, int *ct)
+{
+	ct[4] = (ct[0] < 0 || form.flag[1] || form.flag[2]) ? 1 : 0;
+	(*cnt) += ft_max(form.width, ft_max(form.precision, ct[2]) + ct[4]);
+	form.precision = ft_max(form.precision - ct[2], 0);
+	form.width = ft_max(form.width - form.precision - (ct[2] + ct[4]), 0);
+	if (form.flag[0] == 0 && form.flag[4] == 0)
+		while (form.width-- > 0)
+			ft_putchar_fd(' ', 1);
+	if (ct[0] < 0)
+		ft_putchar_fd('-', 1);
+	else if (form.flag[1] || form.flag[2])
+		ft_putchar_fd(form.flag[1] ? '+' : ' ', 1);
+	while (form.precision-- > 0)
+		ft_putchar_fd('0', 1);
+	if (form.flag[4])
+		while (form.width-- > 0)
+			ft_putchar_fd('0', 1);
+	ft_putnbr_fd(ct[0] < 0 ? ct[0] * -1 : ct[0], 1);
+	while (form.width-- > 0)
+		ft_putchar_fd(' ', 1);
+}
+
+static void	ft_3_2_1(t_form form, int *cnt, int *ct)
+{
+	ct[2] = 1;
+	while (ct[1] > 9 || ct[1] < -9)
 	{
 		ct[2]++;
-		ct[1] /= 10LL;
+		ct[1] /= 10;
 	}
-
-
-	if (form.precision != -1)
+	if (form.precision != -1 || form.flag[0])
 		form.flag[4] = 0;
-	if (ct[0] < 0LL)
-	{
-		form.precision++;
-		if (ct[0] == LLMIN)
-		{
-			if (form.width > 20 && form.width > form.precision)
-			{
-				(*cnt) += form.width;
-				if (form.flag[0])
-				{
-					ft_putchar_fd('-', 1);
-					ct[3] = (long long int)form.precision;
-					while (ct[3]-- > 20)
-						ft_putchar_fd('0', 1);
-					ft_putstr_fd(LL_STR, 1);
-					while (form.width > 20 && form.width > form.precision)
-					{
-						ft_putchar_fd(' ', 1);
-						form.width--;
-					}
-				}
-				else if (form.flag[4])
-				{
-					//sign, left pad 0
-					ft_putchar_fd('-', 1);
-					while (form.width > 20 && form.width > form.precision)
-					{
-						ft_putchar_fd('0', 1);
-						form.width--;
-					}
-					ft_putstr_fd(LL_STR, 1);
-				}
-				else
-				{
-					//left pad ' ', sign
-					while (form.width > 20 && form.width > form.precision)
-					{
-						ft_putchar_fd(' ', 1);
-						form.width--;
-					}
-					ft_putchar_fd('-', 1);
-					while ((form.precision)-- > 20)
-						ft_putchar_fd('0', 1);
-					ft_putstr_fd(LL_STR, 1);
-				}
-			}
-			else if (form.precision > 20)
-			{
-				(*cnt) += form.precision;
-				ft_putchar_fd('-', 1);
-				while (form.precision-- > 20)
-					ft_putchar_fd('0', 1);
-				ft_putstr_fd(LL_STR, 1);
-			}
-			else
-			{
-				(*cnt) += 20;
-				ft_putchar_fd('-', 1);
-				ft_putstr_fd(LL_STR, 1);
-			}
-			return ;
-		}
-		else
-			ct[0] *= -1LL;
-		(form.precision)--;
-		(form.width)--;
-		if (form.width > (int)ct[2] && form.width > form.precision)
-		{
-			(*cnt) += form.width + 1;
-			if (form.flag[0])
-			{
-				ft_putchar_fd('-', 1);
-				ft_putll(ct[0], form);
-				while (form.width > (int)ct[2] && form.width > form.precision)
-				{
-					form.width--;
-					ft_putchar_fd(' ', 1);
-				}
-			}
-			else if (form.flag[4])
-			{
-				ft_putchar_fd('-', 1);
-				while (form.width > (int)ct[2] && form.width > form.precision)
-				{
-					ft_putchar_fd('0', 1);
-					form.width--;
-				}
-				ft_putll(ct[0], form);
-			}
-			else
-			{
-				while (form.width > (int)ct[2] && form.width > form.precision)
-				{
-					ft_putchar_fd(' ', 1);
-					form.width--;
-				}
-				ft_putchar_fd('-', 1);
-				ft_putll(ct[0], form);
-			}
-		}
-		else
-		{
-			ft_putchar_fd('-', 1);
-			(*cnt) += ft_putll(ct[0], form) + 1;
-		}
-		return ;
-	}
-	if (form.width > (int)ct[2] && form.width > form.precision)
-	{
-		(*cnt) += form.width;
-		if (form.flag[0])
-		{
-			if (form.flag[1])
-			{
-				ft_putchar_fd('+', 1);
-				form.width--;
-			}
-			else if (form.flag[2])
-			{
-				ft_putchar_fd(' ', 1);
-				form.width--;
-			}
-			ft_putll(ct[0], form);
-			while (form.width > (int)ct[2] && form.width > form.precision)
-			{
-				form.width--;
-				ft_putchar_fd(' ', 1);
-			}
-		}
-		else if (form.flag[4])
-		{
-			if (form.flag[1])
-			{
-				ft_putchar_fd('+', 1);
-				form.width--;
-			}
-			else if (form.flag[2])
-			{
-				ft_putchar_fd(' ', 1);
-				form.width--;
-			}
-			while (form.width > (int)ct[2] && form.width > form.precision)
-			{
-				ft_putchar_fd('0', 1);
-				form.width--;
-			}
-			ft_putll(ct[0], form);
-		}
-		else
-		{
-			if (form.flag[1] || form.flag[2])
-				form.width--;
-			while (form.width > (int)ct[2] && form.width > form.precision)
-			{
-				ft_putchar_fd(' ', 1);
-				form.width--;
-			}
-			if (form.flag[1])
-				ft_putchar_fd('+', 1);
-			else if (form.flag[2])
-				ft_putchar_fd(' ', 1);
-			ft_putll(ct[0], form);
-		}
-	}
+	if (ct[0] == INTMIN)
+		ft_3_2_1_0(form, cnt);
 	else
-	{
-		//no width
-		if (form.flag[1])
-		{
-			ft_putchar_fd('+', 1);
-			(*cnt)++;
-		}
+		ft_3_2_1_1(form, cnt, ct);
+}
 
-		else if (form.flag[2])
-		{
-			(*cnt)++;
-			ft_putchar_fd(' ', 1);
-		}
-		(*cnt) += ft_putll(ct[0], form);
-	}*/
+void		ft_3_2(t_form form, va_list *arg, int *cnt)
+{
+	int		ct[5];
+	short	x;
+
+	x = (short)va_arg(*arg, int);
+	ct[0] = (int)x;
+	ct[1] = (int)x;
+	if (ct[0] == 0 && form.precision == 0)
+		ft_3_2_0(form, cnt);
+	else
+		ft_3_2_1(form, cnt, (int*)ct);
 }
