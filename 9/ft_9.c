@@ -2,7 +2,6 @@
 
 void ft_9(t_form form, va_list *arg, int *cnt)
 {
-	//n
 	if (form.length == 0)
 		ft_9_0(arg, cnt);
 	else if (form.length == 1)
