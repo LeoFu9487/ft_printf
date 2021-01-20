@@ -2,6 +2,7 @@
 
 void		ft_6_1_0(t_form form, int *cnt)
 {
+	form.precision = (form.precision == -1 ? 1 : form.precision);
 	(*cnt) += ft_max(0, ft_max(form.width, form.precision));
 	form.precision = ft_max(form.precision, 0);
 	form.width = ft_max(form.width - form.precision, 0);

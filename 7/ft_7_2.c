@@ -8,7 +8,9 @@ void		ft_7_2(t_form form, va_list *arg, int *cnt)
 	x = (unsigned short)va_arg(*arg, unsigned);
 	ct[0] = (unsigned long long)x;
 	ct[1] = ct[0];
-	if (ct[0] == 0ULL && form.precision == 0)
+	if (form.precision != -1 || form.flag[0])
+		form.flag[4] = 0;
+	if (ct[0] == 0ULL)
 		ft_7_1_0(form, cnt);
 	else
 		ft_7_1_1(form, cnt, (unsigned long long*)ct);	
