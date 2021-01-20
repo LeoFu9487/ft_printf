@@ -47,6 +47,7 @@ int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 void	ft_itoa_base_ull(unsigned long long num, const char *base);
 void	ft_putll(long long int num);
+void	ft_putwchar(wchar_t *c);
 void	ft_putull(unsigned long long num);
 void	ft_putdouble(double num, t_form form, int len);
 double	ft_round_up(double *num, int precision);

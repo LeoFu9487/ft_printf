@@ -31,3 +31,8 @@ void	ft_putull(unsigned long long int num)
 {
 	ft_putull_sub(num);
 }
+
+void	ft_putwchar(wchar_t *c)
+{
+	write(1, c, 1);
+}
