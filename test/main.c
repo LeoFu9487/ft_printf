@@ -24,6 +24,7 @@ int a,b;
 int fail;
 void check()
 {
+
 	if (a == b){
 		printf("YES : %d\n", a);
 	}
@@ -31,12 +32,20 @@ void check()
 		printf("NO : %d %d \n", a, b);
 		fail = 1;
 	}
+	
 }
 
 int main()
 {
 	fail = 0;
-	#ifdef TEST_0
+	/*wchar_t  s[] = {' ', u'ƀ', u'ɏ', u'ɐ', ' ', u'ʯ', ' ', u'ʰ', u'˿', ' ', u'ୟ', ' ', u'௫', ' ', ' ', u'࿚', 0};
+	
+	a = ft_printf("%ls\n\n", s);
+	b = printf("%ls\n\n", s);
+	check();
+	*/
+	
+	/*#ifdef TEST_0
 		if (fail){
 			printf("TEST_0 : FAIL\n");
 			return (0);
@@ -63,10 +72,30 @@ int main()
 		printf("TEST_1 : SUCCEED\n");
 	#endif
 	#ifdef TEST_2
-		//a = printf("%050p\n", &a);
-		//b = ft_printf("%050p\n", &a);
-		//check();
-		ft_printf("%p\n", &a);
+		a = ft_printf("%.p\n", NULL);
+		b = printf("%.p\n", NULL);
+		check();
+		a = printf("%050p\n\n", &a);
+		b = ft_printf("%050p\n\n", &a);
+		check();
+		a = ft_printf("%p\n\n", NULL);
+		b = printf("%p\n\n", NULL);
+		check();
+		a = ft_printf("%0*.*p\n\n", -20, 12, NULL);
+		b = printf("%0*.*p\n\n", -20, 12, NULL);
+		check();
+		a = ft_printf("%50.2p\n\n", NULL);
+		b = printf("%50.2p\n\n", NULL);
+		check();
+		a = ft_printf("%050.p\n\n", NULL);
+		b = printf("%050.p\n\n", NULL);
+		check();
+		a = ft_printf("%50.p\n\n", NULL);
+		b = printf("%50.p\n\n", NULL);
+		check();
+		a = ft_printf("%-50.p\n\n", NULL);
+		b = ft_printf("%-50.p\n\n", NULL);
+		check();
 		if (fail){
 			printf("TEST_2 : FAIL\n");
 			return (0);
@@ -99,6 +128,9 @@ int main()
 		printf("TEST_5 : SUCCEED\n");
 	#endif
 	#ifdef TEST_6
+		a = printf("%#.x", 0ULL);
+		b = ft_printf("%#.x", 0ULL);
+		check();
 		if (fail){
 			printf("TEST_6 : FAIL\n");
 			return (0);
@@ -154,7 +186,7 @@ int main()
 
 		printf("TEST_12 : SUCCEED\n");
 	#endif
-	printf("SUCCEED ! \nGood Job !\n");
+	printf("SUCCEED ! \nGood Job !\n");*/
 	/*long long n = -9223372036854775807LL;
 	n--;
 	a = printf("%lld\n", LLMIN);
@@ -206,3 +238,10 @@ make sure every function is allowed
 /*
 Do I need to deal with error and return -1 ? 
 */
+/*
+read the subject to make check every bonus
+*/
+
+/*
+ *Do I need to do (nil) when "%p", NULL ? 
+ * */

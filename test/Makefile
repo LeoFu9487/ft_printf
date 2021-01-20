@@ -1,11 +1,11 @@
 NAME = test
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra
 
 all : $(NAME)
 
 TEST :
-	gcc $(CFLAGS) -D TEST_0 -D TEST_1 -D TEST_2 -D TEST_3 -D TEST_4 -D TEST_5 -D TEST_6 -D TEST_7 -D TEST_8 -D TEST_9 -D TEST_10 -D TEST_11 -D TEST_12  main.c libftprintf.a -o test
+	gcc  -D TEST_0 -D TEST_1 -D TEST_2 -D TEST_3 -D TEST_4 -D TEST_5 -D TEST_6 -D TEST_7 -D TEST_8 -D TEST_9 -D TEST_10 -D TEST_11 -D TEST_12  main.c libftprintf.a -o test
 	./test -| cat -e
 
 TEST0 :
@@ -72,3 +72,7 @@ re :
 
 clean :
 	rm test
+
+fclean :
+	rm test
+	$(MAKE) fclean -C ../
