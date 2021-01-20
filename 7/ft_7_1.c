@@ -27,13 +27,13 @@ static void	ft_7_1_1_0(t_form form, int *cnt, unsigned long long *ct)
 		while (form.width-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (form.flag[3])
-		ft_putstr_fd("0x", 1);
+		ft_putstr_fd("0X", 1);
 	if (form.flag[4])
 		while (form.width-- > 0)
 			ft_putchar_fd('0', 1);
 	while (form.precision-- > 0)
 		ft_putchar_fd('0', 1);
-	ft_itoa_base_ull(ct[0], "0123456789abcdef");
+	ft_itoa_base_ull(ct[0], "0123456789ABCDEF");
 	while (form.width-- > 0)
 		ft_putchar_fd(' ', 1);
 }
