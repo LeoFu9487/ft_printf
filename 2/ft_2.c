@@ -29,15 +29,39 @@ static void	ft_2_sub(t_form form, void *out)
 	}
 }
 
+void		ft_2_1(t_form form, int *cnt)
+{
+	form.precision = ft_max(form.precision, 0);
+	(*cnt) += ft_max(form.precision + 2, form.width);
+	form.width = ft_max(form.width - form.precision - 2, 0);
+	if (form.flag[0] == 0 && form.flag[4] == 0)
+		while (form.width-- > 0)
+			ft_putchar_fd(' ', 1);
+	ft_putstr_fd("0x", 1);
+	if (form.flag[4])
+		while (form.width-- > 0)
+			ft_putchar_fd('0', 1);
+	while (form.precision-- > 0)
+		ft_putchar_fd('0', 1);
+	while (form.width-- > 0)
+		ft_putchar_fd(' ', 1);
+	
+}
+
 void		ft_2(t_form form, va_list *arg, int *cnt)
 {
 	int		len;
 	void	*out;
 
 	out = va_arg(*arg, void*);
-	len = ft_get_len((unsigned long)out, 16UL);
 	if (form.precision != -1 || form.flag[0])
 		form.flag[4] = 0;
+	if (out == NULL)
+	{
+		ft_2_1(form, cnt);
+		return ;
+	}
+	len = ft_get_len((unsigned long)out, 16UL);
 	form.precision = ft_max(form.precision, len);
 	form.width = ft_max(form.width, form.precision + 2);
 	(*cnt) += form.width;

@@ -5,7 +5,7 @@ static void	ft_1_(t_form form, va_list *arg, int *cnt)
 	char	*out;
 
 	out = va_arg(*arg, char*);
-	out = (out ? out : "null");
+	out = (out ? out : "(null)");
 	if (form.precision == -1)
 		form.precision = (int)ft_strlen(out);
 	else if (form.precision > (int)ft_strlen(out))
@@ -22,18 +22,23 @@ static void	ft_1_(t_form form, va_list *arg, int *cnt)
 		ft_putchar_fd(' ', 1);
 }
 
+static int	ft_outlen(wchar_t *out)
+{
+	return (*out == 0 ? 0 : 1 + ft_outlen(out + 1));
+}
+
 static void	ft_1_0(t_form form, va_list *arg, int *cnt)
 {
-	void	*out;
+	wchar_t	*out;
 	char	*ptr;
 
-	ptr = "null";
+	ptr = "(null)";
 	out = va_arg(*arg, wchar_t*);
-	out = (out ? out : ptr);
+	out = (out ? out : (wchar_t*)ptr);
 	if (form.precision == -1)
-		form.precision = (int)ft_strlen(out);
-	else if (form.precision > (int)ft_strlen(out))
-		form.precision = (int)ft_strlen(out);
+		form.precision = ft_outlen(out);
+	else if (form.precision > ft_outlen(out))
+		form.precision = ft_outlen(out);
 	form.width = (form.width > form.precision ? form.width : form.precision);
 	(*cnt) += form.width;
 	form.width -= form.precision;
