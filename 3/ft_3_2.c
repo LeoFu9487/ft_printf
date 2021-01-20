@@ -6,6 +6,9 @@ not finished yet
 
 void ft_3_2(t_form form, va_list *arg, int *cnt)
 {
+	(void)form;
+	(void)arg;
+	(void)cnt;
 	/*
 	problem : +, - , ' '(sign) should be the first
 	deal with LLONG_MIN separately
@@ -15,7 +18,7 @@ void ft_3_2(t_form form, va_list *arg, int *cnt)
 	if left pad ' ' then ' ' before sign
 	*/
 	//lld
-	long long int   ct[4];
+/*	long long int   ct[4];
 
 	ct[1] = ct[0] = va_arg(*arg, long long int);
 	if (ct[0] == 0LL && form.precision == 0)
@@ -246,5 +249,5 @@ void ft_3_2(t_form form, va_list *arg, int *cnt)
 			ft_putchar_fd(' ', 1);
 		}
 		(*cnt) += ft_putll(ct[0], form);
-	}
+	}*/
 }

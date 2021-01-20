@@ -6,6 +6,10 @@
 
 #define LLMIN (-9223372036854775807LL - 1LL)
 #define LL_STR "9223372036854775808"
+#define LMIN (-9223372036854775807L - 1L)
+#define LSTR "9223372036854775808"
+#define INTMIN (-2147483648)
+#define INTSTR "2147483648"
 
 typedef struct  s_form
 {
@@ -42,7 +46,7 @@ int		ft_get_len(unsigned long num, unsigned long base_len);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 void	ft_itoa_base_ull(unsigned long long num, const char *base);
-int		ft_putll(long long int num, t_form form);
+void	ft_putll(long long int num);
 int		ft_putull(unsigned long long int num, t_form form);
 void	ft_putdouble(double num, t_form form, int len);
 double	ft_round_up(double *num, int precision);
