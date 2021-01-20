@@ -19,7 +19,7 @@ SRCS = ft_printf.c	out.c\
 	./12/ft_12.c\
 	./parse/parse.c\
 	./put/ft_put.c	./put/ft_put_flag_e.c	./put/ft_put_flag_g.c	./put/ft_putdouble.c\
-	./utils/ft_itoa_base.c	./utils/ft_minmax.c
+	./utils/ft_itoa_base.c	./utils/ft_itoa_base_2.c	./utils/ft_minmax.c
 
 HEADER = ./includes/
 
