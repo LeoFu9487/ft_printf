@@ -5,8 +5,8 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 SRCS = ft_printf.c	out.c\
-	./0/ft_0.c	./0/ft_0_0.c\
-	./1/ft_1.c	./1/ft_1_0.c\
+	./0/ft_0.c\
+	./1/ft_1.c\
 	./2/ft_2.c\
 	./3/ft_3.c	./3/ft_3_.c	./3/ft_3_0.c	./3/ft_3_1.c	./3/ft_3_2.c	./3/ft_3_3.c\
 	./5/ft_5.c	./5/ft_5_.c	./5/ft_5_0.c	./5/ft_5_1.c	./5/ft_5_2.c	./5/ft_5_3.c\
@@ -19,7 +19,7 @@ SRCS = ft_printf.c	out.c\
 	./12/ft_12.c\
 	./parse/parse.c\
 	./put/ft_put.c	./put/ft_put_flag_e.c	./put/ft_put_flag_g.c	./put/ft_putdouble.c\
-	./utils/ft_itoa_base.c
+	./utils/ft_itoa_base.c	./utils/ft_minmax.c
 
 HEADER = ./includes/
 

@@ -36,10 +36,7 @@ void check()
 int main()
 {
 	fail = 0;
-	printf("%d\n",ft_printf("%-4s\n", "456"));
 	#ifdef TEST_0
-		printf("\n\n");
-
 		if (fail){
 			printf("TEST_0 : FAIL\n");
 			return (0);
@@ -48,6 +45,16 @@ int main()
 		printf("TEST_0 : SUCCEED\n");
 	#endif
 	#ifdef TEST_1
+		char *s = NULL;
+		a = printf("%5.2s\n", s);
+		b = ft_printf("%5.2s\n", s);
+		check();
+		wchar_t *x = malloc(5 * sizeof(wchar_t));
+		x[0] = 50;
+		x[1] = 0;
+		a = printf("%ls\n", x);
+		b = ft_printf("%ls\n", x);
+		check();
 		if (fail){
 			printf("TEST_1 : FAIL\n");
 			return (0);
@@ -56,6 +63,10 @@ int main()
 		printf("TEST_1 : SUCCEED\n");
 	#endif
 	#ifdef TEST_2
+		//a = printf("%050p\n", &a);
+		//b = ft_printf("%050p\n", &a);
+		//check();
+		ft_printf("%p\n", &a);
 		if (fail){
 			printf("TEST_2 : FAIL\n");
 			return (0);
@@ -191,4 +202,7 @@ when I put too many digits of double, I need to put 0 instead ?
 /*
 check all the malloc and remember to free everything
 make sure every function is allowed
+*/
+/*
+Do I need to deal with error and return -1 ? 
 */

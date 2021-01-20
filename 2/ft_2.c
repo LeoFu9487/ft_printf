@@ -1,27 +1,47 @@
 #include "../includes/ft_printf.h"
 
-void ft_2(t_form form, va_list *arg, int *cnt)
+static void	ft_2_sub(t_form form, void *out)
 {
-	// p
-	if (form.width > 8)
+	if (form.flag[4])
 	{
-		(*cnt) += form.width;
-		if (form.flag[0])
-		{
-			ft_itoa_base(va_arg(*arg, void*), "0123456789ABCDEF");
-			while (form.width-- > 8)
-				ft_putchar_fd(' ', 1);
-		}
-		else
-		{
-			while (form.width-- > 8)
-				ft_putchar_fd(' ', 1);
-			ft_itoa_base(va_arg(*arg, void*), "0123456789ABCDEF");
-		}
+		ft_putstr_fd("0x", 1);
+		while (form.width-- > 0)
+			ft_putchar_fd('0', 1);
+		ft_itoa_base(out, "0123456789abcdef");
+	}
+	else if (form.flag[0] == 0)
+	{
+		while (form.width-- > 0)
+			ft_putchar_fd(' ', 1);
+		ft_putstr_fd("0x", 1);
+		while (form.precision-- > 0)
+			ft_putchar_fd('0', 1);
+		ft_itoa_base(out, "0123456789abcdef");
 	}
 	else
 	{
-		(*cnt) += 8;
-		ft_itoa_base(va_arg(*arg, void*), "0123456789ABCDEF");
+		ft_putstr_fd("0x", 1);
+		while (form.precision-- > 0)
+			ft_putchar_fd('0', 1);
+		ft_itoa_base(out, "0123456789abcdef");
+		while (form.width-- > 0)
+			ft_putchar_fd(' ', 1);
 	}
+}
+
+void		ft_2(t_form form, va_list *arg, int *cnt)
+{
+	int		len;
+	void	*out;
+
+	out = va_arg(*arg, void*);
+	len = ft_get_len((unsigned long)out, 16UL);
+	if (form.precision != -1 || form.flag[0])
+		form.flag[4] = 0;
+	form.precision = ft_max(form.precision, len);
+	form.width = ft_max(form.width, form.precision + 2);
+	(*cnt) += form.width;
+	form.width -= form.precision + 2;
+	form.precision -= len;
+	ft_2_sub(form, out);
 }
