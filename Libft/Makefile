@@ -43,8 +43,8 @@ BONUS_OBJECTS = $(BONUS_SRCS:.c=.o)
 all : $(NAME)
 
 bonus : $(OBJECTS) $(BONUS_OBJECTS)
-	ar rc $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
+	@ranlib $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)

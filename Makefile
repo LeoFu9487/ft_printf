@@ -23,15 +23,17 @@ SRCS = ft_printf.c	out.c\
 
 HEADER = ./includes/
 
+INCLUDE = ./includes/ft_printf.h
+
 OBJS = $(SRCS:.c=.o)
 
-$(NAME) : $(OBJS)
-	$(MAKE) bonus -C ./Libft
-	cp Libft/libft.a $(NAME)
-	ar -rcs $(NAME) $(OBJS)
-	ranlib $(NAME)
-	
-# do i need to copy ? 
+LIBFT = ./Libft/libft.a
+
+$(NAME) : $(OBJS) $(INCLUDE) $(LIBFT)
+	@$(MAKE) bonus -C ./Libft
+	@cp Libft/libft.a $(NAME)
+	@ar -rcs $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 all : $(NAME)
 
@@ -39,24 +41,19 @@ bonus : $(NAME)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -I $(HEADER)  -c $< -o $@
- 
-# dependency on library is a problem
 
 clean : 
-	rm -rf $(OBJS)
-	$(MAKE) clean -C ./Libft
+	@rm -rf $(OBJS)
+	@$(MAKE) clean -C ./Libft
 	
 fclean : clean
-	rm -rf $(NAME)
-	$(MAKE) fclean -C ./Libft
+	@rm -rf $(NAME)
+	@$(MAKE) fclean -C ./Libft
 
 git : 
 	git add *
 	git commit -m "autocommit"
 	git push
-# try to modify every kind of file (in libft, .c, .h, .o etc.) and recompile
-
-# Did I clean the libft.a that I copied ?
 
 re : fclean all
 
