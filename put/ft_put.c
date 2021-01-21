@@ -32,7 +32,31 @@ void	ft_putull(unsigned long long int num)
 	ft_putull_sub(num);
 }
 
-void	ft_putwchar(wchar_t *c)
+void	ft_putwchar(wchar_t num)
 {
-	write(1, c, 1);
+	unsigned char	arr[4];
+
+	if (num <= 0x7F)
+		write(1, &num, 1);
+	else if (num >= 0x80 && num <= 0x7FF)
+	{
+		arr[0] = ((num & 0xFC0) >> 6) | 0xC0;
+		arr[1] = (num & 0x3F) | 0x80;
+		write(1, arr, 2);
+	}
+	else if (num >= 0x800 && num <= 0xFFFF)
+	{
+		arr[0] = ((num & 0x3F000) >> 12) | 0xE0;
+		arr[1] = ((num & 0xFC0) >> 6) | 0x80;
+		arr[2] = (num & 0x3F) | 0x80;
+		write(1, arr, 3);
+	}
+	else if (num >= 0x10000 && num <= 0x10FFFF)
+	{
+		arr[0] = ((num & 0x1C0000) >> 18) | 0xF0;
+		arr[1] = ((num & 0x3F000) >> 12) | 0x80;
+		arr[2] = ((num & 0xFC0) >> 6) | 0x80;
+		arr[3] = (num & 0x3F) | 0x80;
+		write(1, arr, 4);
+	}
 }
