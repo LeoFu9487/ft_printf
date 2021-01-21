@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 SRCS = ft_printf.c	out.c\
-	./0/ft_0.c\
+	./0/ft_0.c	./0/ft_0_0.c\
 	./1/ft_1.c\
 	./2/ft_2.c\
 	./3/ft_3.c	./3/ft_3_.c	./3/ft_3_0.c	./3/ft_3_1.c	./3/ft_3_2.c	./3/ft_3_3.c\
@@ -30,16 +30,18 @@ OBJS = $(SRCS:.c=.o)
 LIBFT = ./Libft/libft.a
 
 $(NAME) : $(OBJS) $(INCLUDE) $(LIBFT)
-	@$(MAKE) bonus -C ./Libft
 	@cp Libft/libft.a $(NAME)
 	@ar -rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
+$(LIBFT) :
+	$(MAKE) -C ./Libft/
+
 
 all : $(NAME)
 
 bonus : $(NAME)
 
-%.o : %.c $(HEADER)
+%.o : %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -I $(HEADER)  -c $< -o $@
 
 clean : 
