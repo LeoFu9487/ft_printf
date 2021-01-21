@@ -1,5 +1,7 @@
 #include "../includes/ft_printf.h"
 
+//flag[4] doesn't work
+
 static void	ft_1_(t_form form, va_list *arg, int *cnt)
 {
 	char	*out;

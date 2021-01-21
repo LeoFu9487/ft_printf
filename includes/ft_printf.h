@@ -54,6 +54,7 @@ double	ft_round_up(double *num, int precision);
 void	ft_put_flag_e(double num, int sc, t_form form);
 void	ft_put_flag_g(double num, t_form form, int *cnt);
 void	ft_0(t_form form, va_list *arg, int *cnt);
+void	ft_0_0(t_form form, va_list *arg, int *cnt);
 void	ft_1(t_form form, va_list *arg, int *cnt);
 void	ft_2(t_form form, va_list *arg, int *cnt);
 void	ft_3(t_form form, va_list *arg, int *cnt);
