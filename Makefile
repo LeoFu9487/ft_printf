@@ -29,33 +29,57 @@ OBJS = $(SRCS:.c=.o)
 
 LIBFT = ./Libft/libft.a
 
-$(NAME) : $(OBJS) $(INCLUDE) $(LIBFT)
-	@cp Libft/libft.a $(NAME)
+LIBFTPATH = ./Libft/
+
+LIBFTFILE = ft_split.c       ft_strchr.c \
+ft_atoi.c                       ft_strdup.c \
+ft_bzero.c                      ft_strjoin.c \
+ft_calloc.c                     ft_memccpy.c            ft_strlcat.c \
+ft_isalnum.c            ft_memchr.c                     ft_strlcpy.c \
+ft_isalpha.c            ft_memcmp.c                     ft_strlen.c \
+ft_isascii.c            ft_memcpy.c                     ft_strmapi.c \
+ft_isdigit.c            ft_memmove.c            ft_strncmp.c \
+ft_isprint.c            ft_memset.c                     ft_strnstr.c \
+ft_itoa.c                       ft_strrchr.c \
+ft_putchar_fd.c         ft_strtrim.c \
+ft_putendl_fd.c         ft_substr.c \
+ft_putnbr_fd.c          ft_tolower.c \
+ft_putstr_fd.c          ft_toupper.c	libft.h
+
+LIBFTSRCS = $(addprefix $(LIBFTPATH), $(LIBFTFILE))
+
+LIBFTOBJS = $(LIBFTSRCS:.c=.o)
+
+$(NAME) : $(LIBFTSRCS) $(LIBFTOBJS) $(LIBFT) $(INCLUDE) $(OBJS) $(SRCS)
+	@$(MAKE) -C ./Libft/
+	@cp $(LIBFT) $(NAME)
 	@ar -rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
+	@echo "libftprintf.a created / updated successfully"
+
+$(LIBFTOBJS) :
+	@$(MAKE) -C ./Libft/
+
 $(LIBFT) :
-	$(MAKE) -C ./Libft/
+	@$(MAKE) -C ./Libft/
 
+%.o : %.c $(INCLUDE) $(LIBFT)
+	@$(CC) $(CFLAGS) -I $(HEADER)  -c $< -o $@
 
-all : $(NAME)
+all : $(LIBFTSRCS) $(LIBFTOBJS) $(LIBFT) $(INCLUDE) $(OBJS) $(SRCS) $(NAME)
 
-bonus : $(NAME)
-
-%.o : %.c $(INCLUDE)
-	$(CC) $(CFLAGS) -I $(HEADER)  -c $< -o $@
+bonus : $(LIBFTSRCS) $(LIBFTOBJS) $(LIBFT) $(INCLUDE) $(OBJS) $(SRCS) $(NAME)
+	@echo "(bonus)"
 
 clean : 
 	@rm -rf $(OBJS)
 	@$(MAKE) clean -C ./Libft
-	
-fclean : clean
-	@rm -rf $(NAME)
-	@$(MAKE) fclean -C ./Libft
+	@echo "libftprintf.a clean finished"
 
-git : 
-	git add *
-	git commit -m "autocommit"
-	git push
+fclean :
+	@rm -rf $(NAME) $(OBJS)
+	@$(MAKE) fclean -C ./Libft
+	@echo "libftprintf.a fclean finished"
 
 re : fclean all
 

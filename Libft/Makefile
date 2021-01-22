@@ -36,9 +36,17 @@ ft_lstclear.c	ft_lstdelone.c	ft_lstiter.c \
 ft_lstlast.c	ft_lstmap.c		ft_lstnew.c \
 ft_lstsize.c
 
+HEADER = libft.h
+
 OBJECTS = $(SRCS:.c=.o)
 
 BONUS_OBJECTS = $(BONUS_SRCS:.c=.o)
+
+
+$(NAME): $(OBJECTS) $(SRCS) $(HEADER)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+	@echo "libft.a created / updated successfully"
 
 all : $(NAME)
 
@@ -46,18 +54,17 @@ bonus : $(OBJECTS) $(BONUS_OBJECTS)
 	@ar rc $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
 	@ranlib $(NAME)
 
-$(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
-
 %.o : %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-		rm -rf $(OBJECTS) $(BONUS_OBJECTS)
+	@rm -rf $(OBJECTS) $(BONUS_OBJECTS)
+	@echo "libft.a clean done"
 
-fclean: clean
-		rm -rf $(NAME)
+fclean:
+	@rm -rf $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
+	@echo "libft.a fclean done"
+
 re: fclean all
 
 .PHONY : all bonus clean fclean re
