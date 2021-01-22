@@ -29,7 +29,7 @@ static void	ft_1_0_fill(wchar_t *ptr)
 	ptr[6] = 0;
 }
 
-void	ft_1_0(t_form form, va_list *arg, int *cnt)
+void		ft_1_0(t_form form, va_list *arg, int *cnt)
 {
 	wchar_t	*out;
 	wchar_t	ptr[7];
@@ -51,7 +51,7 @@ void	ft_1_0(t_form form, va_list *arg, int *cnt)
 	{
 		ft_putwchar(*out);
 		form.precision -= ft_cnt(*(out++));
-	}		
+	}
 	while (form.width-- > 0)
 		ft_putchar_fd(' ', 1);
 }

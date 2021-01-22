@@ -39,7 +39,8 @@ static void	ft_3_1_1_0(t_form form, int *cnt)
 static void	ft_3_1_1_1(t_form form, int *cnt, long long *ct)
 {
 	ct[4] = (ct[0] < 0LL || form.flag[1] || form.flag[2]) ? 1LL : 0LL;
-	(*cnt) += ft_max(form.width, ft_max(form.precision, (int)ct[2]) + (int)ct[4]);
+	(*cnt) += ft_max(form.width, ft_max(form.precision, (int)ct[2])
+													+ (int)ct[4]);
 	form.precision = ft_max(form.precision - (int)ct[2], 0);
 	form.width = ft_max(form.width - form.precision - (int)(ct[2] + ct[4]), 0);
 	if (form.flag[0] == 0 && form.flag[4] == 0)
@@ -59,7 +60,7 @@ static void	ft_3_1_1_1(t_form form, int *cnt, long long *ct)
 		ft_putchar_fd(' ', 1);
 }
 
- void		ft_3_1_1(t_form form, int *cnt, long long *ct)
+void		ft_3_1_1(t_form form, int *cnt, long long *ct)
 {
 	long long	llmin;
 

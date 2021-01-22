@@ -45,7 +45,6 @@ void		ft_2_1(t_form form, int *cnt)
 		ft_putchar_fd('0', 1);
 	while (form.width-- > 0)
 		ft_putchar_fd(' ', 1);
-	
 }
 
 void		ft_2(t_form form, va_list *arg, int *cnt)

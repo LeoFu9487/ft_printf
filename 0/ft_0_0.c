@@ -42,7 +42,7 @@ static void		ft_put(unsigned int num)
 	}
 }
 
-void        	ft_0_0(t_form form, va_list *arg, int *cnt)
+void			ft_0_0(t_form form, va_list *arg, int *cnt)
 {
 	int	num[2];
 
