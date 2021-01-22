@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-static void	ft_3_1_0(t_form form, int *cnt)
+void		ft_3_1_0(t_form form, int *cnt)
 {
 	if (form.flag[1] || form.flag[2])
 	{
@@ -31,7 +31,7 @@ static void	ft_3_1_1_0(t_form form, int *cnt)
 	if (form.flag[4])
 		while (form.width-- > 0)
 			ft_putchar_fd('0', 1);
-	ft_putstr_fd(LL_STR, 1);
+	ft_putstr_fd("9223372036854775808", 1);
 	while (form.width-- > 0)
 		ft_putchar_fd(' ', 1);
 }
@@ -59,8 +59,12 @@ static void	ft_3_1_1_1(t_form form, int *cnt, long long *ct)
 		ft_putchar_fd(' ', 1);
 }
 
-static void	ft_3_1_1(t_form form, int *cnt, long long *ct)
+ void		ft_3_1_1(t_form form, int *cnt, long long *ct)
 {
+	long long	llmin;
+
+	llmin = -9223372036854775807LL;
+	llmin--;
 	ct[2] = 1LL;
 	while (ct[1] > 9LL || ct[1] < -9LL)
 	{
@@ -69,7 +73,7 @@ static void	ft_3_1_1(t_form form, int *cnt, long long *ct)
 	}
 	if (form.precision != -1 || form.flag[0])
 		form.flag[4] = 0;
-	if (ct[0] == LLMIN)
+	if (ct[0] == llmin)
 		ft_3_1_1_0(form, cnt);
 	else
 		ft_3_1_1_1(form, cnt, ct);
@@ -79,7 +83,8 @@ void		ft_3_1(t_form form, va_list *arg, int *cnt)
 {
 	long long int	ct[5];
 
-	ct[1] = ct[0] = va_arg(*arg, long long int);
+	ct[0] = va_arg(*arg, long long int);
+	ct[1] = ct[0];
 	if (ct[0] == 0LL && form.precision == 0)
 		ft_3_1_0(form, cnt);
 	else

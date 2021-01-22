@@ -83,4 +83,7 @@ fclean :
 
 re : fclean all
 
+norm :
+	@echo "norminette $(LIBFTSRCS) $(SRCS) $(INCLUDE)" 
+
 .PHONY: all bonus clean fclean re
