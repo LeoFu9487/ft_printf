@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void ft_9(t_form form, va_list *arg, int *cnt)
+void	ft_9(t_form form, va_list *arg, int *cnt)
 {
 	if (form.length == 0)
 		ft_9_0(arg, cnt);

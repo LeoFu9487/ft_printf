@@ -17,7 +17,7 @@ SRCS = ft_printf.c	out.c\
 	./10/ft_10.c\
 	./11/ft_11.c\
 	./12/ft_12.c\
-	./parse/parse.c\
+	./parse/parse.c	./parse/parse2.c\
 	./put/ft_put.c	./put/ft_put_flag_e.c	./put/ft_put_flag_g.c	./put/ft_putdouble.c\
 	./utils/ft_itoa_base.c	./utils/ft_itoa_base_2.c	./utils/ft_minmax.c
 
@@ -84,6 +84,8 @@ fclean :
 re : fclean all
 
 norm :
-	@echo "norminette $(LIBFTSRCS) $(SRCS) $(INCLUDE)" 
+	@norminette $(SRCS)
+	@norminette $(INCLUDE)
+	@norminette $(LIBFTSRCS)
 
 .PHONY: all bonus clean fclean re

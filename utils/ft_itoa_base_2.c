@@ -1,6 +1,7 @@
 #include "../includes/ft_printf.h"
 
-static void	ft_rec_ull(unsigned long long num, const char *base, unsigned long long len)
+static void	ft_rec_ull(unsigned long long num,
+	const char *base, unsigned long long len)
 {
 	if (num >= len)
 		ft_rec_ull(num / len, base, len);

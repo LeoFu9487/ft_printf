@@ -2,8 +2,6 @@
 
 void	ft_8(t_form form, int *cnt)
 {
-	//%% 
-	//try precision zero
 	form.width = (form.width < 1 ? 1 : form.width);
 	(*cnt) += form.width;
 	if (!form.flag[0])

@@ -21,7 +21,8 @@ void		ft_6_1_0(t_form form, int *cnt)
 static void	ft_6_1_1_0(t_form form, int *cnt, unsigned long long *ct)
 {
 	ct[4] = (form.flag[3] ? 2ULL : 0ULL);
-	(*cnt) += ft_max(form.width, ft_max(form.precision, (int)ct[2]) + (int)ct[4]);
+	(*cnt) += ft_max(form.width, ft_max(form.precision, (int)ct[2])
+													+ (int)ct[4]);
 	form.precision = ft_max(form.precision - (int)ct[2], 0);
 	form.width = ft_max(form.width - form.precision - (int)(ct[2] + ct[4]), 0);
 	if (form.flag[0] == 0 && form.flag[4] == 0)
@@ -54,12 +55,12 @@ void		ft_6_1(t_form form, va_list *arg, int *cnt)
 {
 	unsigned long long	ct[6];
 
-	ct[1] = ct[0] = va_arg(*arg, unsigned long long);
+	ct[0] = va_arg(*arg, unsigned long long);
+	ct[1] = ct[0];
 	if (form.precision != -1 || form.flag[0])
 		form.flag[4] = 0;
 	if (ct[0] == 0ULL)
 		ft_6_1_0(form, cnt);
 	else
 		ft_6_1_1(form, cnt, (unsigned long long*)ct);
-	
 }

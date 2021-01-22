@@ -1,8 +1,7 @@
 #include "../includes/ft_printf.h"
 
-void ft_5(t_form form, va_list *arg, int *cnt)
+void	ft_5(t_form form, va_list *arg, int *cnt)
 {
-	//u
 	if (form.length == 0)
 		ft_5_0(form, arg, cnt);
 	else if (form.length == 1)

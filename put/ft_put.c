@@ -27,12 +27,12 @@ static void	ft_putull_sub(unsigned long long int num)
 	ft_putnbr_fd(out, 1);
 }
 
-void	ft_putull(unsigned long long int num)
+void		ft_putull(unsigned long long int num)
 {
 	ft_putull_sub(num);
 }
 
-void	ft_putwchar(wchar_t num)
+void		ft_putwchar(wchar_t num)
 {
 	unsigned char	arr[4];
 

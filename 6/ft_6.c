@@ -2,7 +2,6 @@
 
 void	ft_6(t_form form, va_list *arg, int *cnt)
 {
-	//x
 	if (form.length == 0)
 		ft_6_0(form, arg, cnt);
 	else if (form.length == 1)

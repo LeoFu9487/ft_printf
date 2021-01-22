@@ -13,5 +13,5 @@ void		ft_7_2(t_form form, va_list *arg, int *cnt)
 	if (ct[0] == 0ULL)
 		ft_7_1_0(form, cnt);
 	else
-		ft_7_1_1(form, cnt, (unsigned long long*)ct);	
+		ft_7_1_1(form, cnt, (unsigned long long*)ct);
 }

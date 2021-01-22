@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void ft_9_(va_list *arg, int *cnt)
+void	ft_9_(va_list *arg, int *cnt)
 {
 	int *va;
 

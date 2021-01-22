@@ -1,13 +1,13 @@
 #include "../includes/ft_printf.h"
 
-static void ft_rec(unsigned long num, unsigned int len, const char *base)
+static void	ft_rec(unsigned long num, unsigned int len, const char *base)
 {
 	if (num >= len)
 		ft_rec(num / len, len, base);
 	ft_putchar_fd(base[num % len], 1);
 }
 
-void 	   ft_itoa_base(void* num, const char *base)
+void		ft_itoa_base(void *num, const char *base)
 {
 	unsigned int	len;
 

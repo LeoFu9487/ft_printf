@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void	ft_5_1_0(t_form form, int *cnt)
+void		ft_5_1_0(t_form form, int *cnt)
 {
 	(*cnt) += ft_max(0, form.width);
 	if (form.flag[0] == 0)
@@ -28,7 +28,7 @@ static void	ft_5_1_1_0(t_form form, int *cnt, unsigned long long *ct)
 		ft_putchar_fd(' ', 1);
 }
 
-void	ft_5_1_1(t_form form, int *cnt, unsigned long long *ct)
+void		ft_5_1_1(t_form form, int *cnt, unsigned long long *ct)
 {
 	ct[2] = 1ULL;
 	while (ct[1] > 9ULL)
@@ -45,7 +45,8 @@ void		ft_5_1(t_form form, va_list *arg, int *cnt)
 {
 	unsigned long long	ct[5];
 
-	ct[1] = ct[0] = va_arg(*arg, unsigned long long);
+	ct[0] = va_arg(*arg, unsigned long long);
+	ct[1] = ct[0];
 	if (ct[0] == 0ULL && form.precision == 0)
 		ft_5_1_0(form, cnt);
 	else
