@@ -17,7 +17,7 @@ static double	ft_round_up_sub(int *ct, double *n,
 			unsigned long long *stack, double *num)
 {
 	ct[1] = 1;
-	n[1] = 0.0;
+	n[1] = 5.0;
 	while (--ct[0] >= 0)
 	{
 		if (ct[1])
