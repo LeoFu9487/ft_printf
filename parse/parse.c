@@ -70,6 +70,8 @@ static void	ft_get_precision(char **str, va_list *arg, t_form *form)
 	if (**str == '*')
 	{
 		form->precision = va_arg(*arg, int);
+		if (form->precision < 0)
+			form->precision = -1;
 		(*str)++;
 	}
 	else
