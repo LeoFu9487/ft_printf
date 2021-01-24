@@ -39,8 +39,6 @@ void			ft_putwchar(wchar_t c);
 void			ft_putull(unsigned long long num);
 void			ft_putdouble(double num, t_form form, int len);
 double			ft_round_up(double *num, int precision);
-void			ft_put_flag_e(double num, int sc, t_form form);
-void			ft_put_flag_g(double num, t_form form, int *cnt);
 void			ft_0(t_form form, va_list *arg, int *cnt);
 void			ft_0_0(t_form form, va_list *arg, int *cnt);
 void			ft_1(t_form form, va_list *arg, int *cnt);
@@ -86,7 +84,5 @@ void			ft_9_1(va_list *arg, int *cnt);
 void			ft_9_2(va_list *arg, int *cnt);
 void			ft_9_3(va_list *arg, int *cnt);
 void			ft_10(t_form form, va_list *arg, int *cnt);
-void			ft_11(t_form form, va_list *arg, int *cnt);
-void			ft_12(t_form form, va_list *arg, int *cnt);
 
 #endif
