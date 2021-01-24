@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-static void ft_putdouble_sub(double num, int len)
+static void		ft_putdouble_sub(double num, int len)
 {
 	unsigned long long n;
 
@@ -13,39 +13,11 @@ static void ft_putdouble_sub(double num, int len)
 	ft_putnbr_fd(n, 1);
 }
 
-double  ft_round_up(double *num, int precision)
+static double	ft_round_up_sub(int *ct, double *n,
+			unsigned long long *stack, double *num)
 {
-	double 	  n[2];
-	unsigned long long	stack[350];
-	int	 ct[3];
-
-	ct[2] = 1;
-	if (*num < 0.0)
-	{
-		(*num) *= -1.0;
-		ct[2] *= -1;
-	}
-	n[0] = *num;
-	stack[0] = (unsigned long long)n[0];
-	n[0] -= (double)stack[0];
-	ct[0] = 1;
-	while (ct[0] <= precision + 1 && ct[0] < 350)
-	{
-		n[0] *= 10.0;
-		stack[ct[0]] = (unsigned long long)n[0];
-		n[0] -= (double)stack[ct[0]];
-		ct[0]++;
-	}
-	//stack[0] -> before the decimal point
-	ct[0]--;
-	if (stack[ct[0]] <= 4ULL)
-	{
-		if (ct[2] == -1)
-			(*num) *= -1.0;
-		return (*num);
-	}
 	ct[1] = 1;
-	n[1] = 5.0;
+	n[1] = 0.0;
 	while (--ct[0] >= 0)
 	{
 		if (ct[1])
@@ -67,13 +39,39 @@ double  ft_round_up(double *num, int precision)
 	return (*num = n[1]);
 }
 
-void	ft_putdouble(double num, t_form form, int len)
+double			ft_round_up(double *num, int precision)
+{
+	double				n[2];
+	unsigned long long	stack[350];
+	int					ct[3];
+
+	ct[2] = 1;
+	if (*num < 0.0)
+		ct[2] *= -1;
+	(*num) = (*num) < 0.0 ? (*num) * -1.0 : (*num);
+	n[0] = *num;
+	stack[0] = (unsigned long long)n[0];
+	n[0] -= (double)stack[0];
+	ct[0] = 1;
+	while (ct[0] <= precision + 1 && ct[0] < 350)
+	{
+		n[0] *= 10.0;
+		stack[ct[0]] = (unsigned long long)n[0];
+		n[0] -= (double)stack[ct[0]];
+		ct[0]++;
+	}
+	ct[0]--;
+	if (stack[ct[0]] <= 4ULL && ct[2] == -1)
+		(*num) *= -1.0;
+	return (stack[ct[0]] <= 4ULL ? (*num) : ft_round_up_sub((int*)ct,
+	(double*)n, (unsigned long long*)stack, (double *)num));
+}
+
+void			ft_putdouble(double num, t_form form, int len)
 {
 	unsigned long long use;
 
-	//first thing : round up
 	ft_putdouble_sub(num, len - 1);
-	//len means how many digits before decimal point
 	if (form.precision == 0)
 	{
 		if (form.flag[3])
