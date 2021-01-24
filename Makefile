@@ -94,6 +94,6 @@ git :
 	@git add $(LIBFTSRCS)
 	@git add Makefile
 	@git add ./Libft/Makefile
-	git commit -m "autocommit0"
+	git commit -m "autocommit"
 
 .PHONY: all bonus clean fclean re
