@@ -88,4 +88,12 @@ norm :
 	@norminette $(INCLUDE)
 	@norminette $(LIBFTSRCS)
 
+git :
+	@git add $(SRCS)
+	@git add $(INCLUDE)
+	@git add $(LIBFTSRCS)
+	@git add Makefile
+	@git add ./Libft/Makefile
+	git commit -m "autocommit0"
+
 .PHONY: all bonus clean fclean re
