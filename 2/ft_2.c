@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_2.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yfu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/26 09:53:18 by yfu               #+#    #+#             */
+/*   Updated: 2021/01/26 09:53:19 by yfu              ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
 static void	ft_2_sub(t_form form, void *out)
@@ -31,6 +43,8 @@ static void	ft_2_sub(t_form form, void *out)
 
 void		ft_2_1(t_form form, int *cnt)
 {
+	if (form.precision == -1)
+		form.precision = 1;
 	form.precision = ft_max(form.precision, 0);
 	(*cnt) += ft_max(form.precision + 2, form.width);
 	form.width = ft_max(form.width - form.precision - 2, 0);

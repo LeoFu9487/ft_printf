@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yfu <marvin@42.fr>                         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/01/26 10:30:25 by yfu               #+#    #+#              #
+#    Updated: 2021/01/26 10:30:26 by yfu              ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 
 CFLAGS = -Wall -Wextra -Werror
@@ -49,7 +61,6 @@ LIBFTSRCS = $(addprefix $(LIBFTPATH), $(LIBFTFILE))
 LIBFTOBJS = $(LIBFTSRCS:.c=.o)
 
 $(NAME) : $(LIBFTSRCS) $(LIBFTOBJS) $(LIBFT) $(INCLUDE) $(OBJS) $(SRCS)
-	@$(MAKE) -C ./Libft/
 	@cp $(LIBFT) $(NAME)
 	@ar -rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
@@ -60,9 +71,6 @@ $(LIBFTOBJS) :
 
 $(LIBFT) :
 	@$(MAKE) -C ./Libft/
-
-%.o : %.c $(INCLUDE) $(LIBFT)
-	@$(CC) $(CFLAGS) -I $(HEADER)  -c $< -o $@
 
 all : $(LIBFTSRCS) $(LIBFTOBJS) $(LIBFT) $(INCLUDE) $(OBJS) $(SRCS) $(NAME)
 
