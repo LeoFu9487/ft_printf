@@ -24,3 +24,5 @@ In fact, there were some faults for ```%f```, but deepthought still accepted thi
 Hence, don't be afraid to try out ```%f``` ```%g``` and ```%e``` (I regret that I didn't submit ```%g``` and ```%e``` because they didn't pass some online testers, deepthought can be less strict than that)
 
 Good luck for this project :)
+
+If there are any advices or questions, please contact yfu@student.42lyon.fr
